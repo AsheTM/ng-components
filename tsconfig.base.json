@@ -18,7 +18,8 @@
       "@ashetm/ng-dialog": ["packages/ng-dialog/src/index.ts"],
       "@ashetm/ng-dialog-alert": ["packages/ng-dialog-alert/src/index.ts"],
       "@ashetm/ng-dialog-confirm": ["packages/ng-dialog-confirm/src/index.ts"],
-      "@ashetm/ng-dialog-form": ["packages/ng-dialog-form/src/index.ts"]
+      "@ashetm/ng-dialog-form": ["packages/ng-dialog-form/src/index.ts"],
+      "@ashetm/shared": ["packages/shared/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
