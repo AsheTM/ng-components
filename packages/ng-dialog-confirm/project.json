@@ -1,0 +1,33 @@
+{
+  "root": "packages/ng-dialog-confirm",
+  "sourceRoot": "packages/ng-dialog-confirm/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/workspace:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/ng-dialog-confirm",
+        "main": "packages/ng-dialog-confirm/src/index.ts",
+        "tsConfig": "packages/ng-dialog-confirm/tsconfig.lib.json",
+        "assets": ["packages/ng-dialog-confirm/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/ng-dialog-confirm/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/ng-dialog-confirm"],
+      "options": {
+        "jestConfig": "packages/ng-dialog-confirm/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
