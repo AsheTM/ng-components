@@ -1,10 +1,6 @@
 {
   "version": 2,
   "projects": {
-    "ng-dialog": "packages/ng-dialog",
-    "ng-dialog-alert": "packages/ng-dialog-alert",
-    "ng-dialog-confirm": "packages/ng-dialog-confirm",
-    "ng-dialog-form": "packages/ng-dialog-form",
-    "shared": "packages/shared"
+    "ng-dialog": "packages/ng-dialog"
   }
 }

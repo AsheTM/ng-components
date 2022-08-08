@@ -1,0 +1,25 @@
+
+// $dialog-color-background-main: #fafafa;
+// $dialog-color-background-primary: #fefeff;
+$dialog-color-background-secondary: #ffcc00;
+// $trafic-color-background-disabled: #0001;
+$dialog-color-background-error: #f02323;
+
+// $trafic-color-border-main: #0002;
+$dialog-color-border-primary: #0011;
+$dialog-color-border-secondary: #000d;
+$dialog-color-border-highlight: $dialog-color-background-secondary;
+// $trafic-color-border-focus: #3457dc;
+// $trafic-color-border-error: $dialog-color-background-error;
+
+// $trafic-color-shadow-main: $trafic-color-background-disabled;
+$dialog-color-shadow-primary: #0005;
+// $trafic-color-shadow-secondary: $trafic-color-border-highlight;
+// $trafic-color-shadow-disabled: rgba($trafic-color-border-focus, .2);
+
+$dialog-color-text-main: #fefeff;
+// $dialog-color-text-primary: #65676a;
+// $dialog-color-text-secondary: #000;
+// $trafic-color-text-highlight: $trafic-color-shadow-secondary;
+$dialog-color-text-disabled: $dialog-color-shadow-primary;
+// $trafic-color-text-error: $trafic-color-border-error;

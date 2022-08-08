@@ -1,0 +1,11 @@
+
+:host{
+  .dialog{
+    min-height: 400px;
+    &-footer{
+      button{
+        width: 50%;
+      }
+    }
+  }
+}

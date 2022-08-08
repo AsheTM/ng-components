@@ -1,0 +1,39 @@
+@import '../scss/all';
+
+@import './dialog.variable';
+
+
+:host{
+  &.close{
+    .dialog{
+      @keyframes FadeOutDialog {
+        0% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        100% {
+          opacity: .8;
+          transform: scale(0.95);
+        }
+      }
+      animation-name: FadeOutDialog;
+      animation-direction: inherit;
+    }
+  }
+  .dialog{
+    @keyframes FadeInDialog {
+      0% {
+        opacity: .8;
+        transform: scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    animation-name: FadeInDialog;
+    animation-duration: $animation-duration;
+    animation-fill-mode: inherit;
+    animation-iteration-count: inherit;
+  }
+}
