@@ -1,0 +1,33 @@
+{
+  "root": "packages/ng-dialog",
+  "sourceRoot": "packages/ng-dialog/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/workspace:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/ng-dialog",
+        "main": "packages/ng-dialog/src/index.ts",
+        "tsConfig": "packages/ng-dialog/tsconfig.lib.json",
+        "assets": ["packages/ng-dialog/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/ng-dialog/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/ng-dialog"],
+      "options": {
+        "jestConfig": "packages/ng-dialog/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
