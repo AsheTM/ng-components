@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
-    "ng-dialog": "packages/ng-dialog"
+    "ng-dialog": "packages/ng-dialog",
+    "ng-dialog-alert": "packages/ng-dialog-alert"
   }
 }

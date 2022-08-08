@@ -1,0 +1,33 @@
+{
+  "root": "packages/ng-dialog-alert",
+  "sourceRoot": "packages/ng-dialog-alert/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/workspace:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/ng-dialog-alert",
+        "main": "packages/ng-dialog-alert/src/index.ts",
+        "tsConfig": "packages/ng-dialog-alert/tsconfig.lib.json",
+        "assets": ["packages/ng-dialog-alert/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/ng-dialog-alert/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/ng-dialog-alert"],
+      "options": {
+        "jestConfig": "packages/ng-dialog-alert/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
