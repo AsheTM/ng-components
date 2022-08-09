@@ -6,7 +6,7 @@
     "build": "npm run lint && npm run test && nx build ng-dialog",
     "lint": "nx lint ng-dialog --format stylish",
     "lint:fix": "npm run lint -- --fix",
-    "package": "npm run build:dialog && cd ./dist/ng-dialog && npm pack",
+    "package": "npm run build && cd ./dist/ng-dialog && npm pack",
     "publish": "cd ./dist/ng-dialog && npm publish",
     "test": "nx test ng-dialog --browsers ChromeHeadless --watch false"
   },
