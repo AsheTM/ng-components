@@ -1,9 +1,7 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/ng-dialog",
-  "assets": [
-    ".npmrc"
-  ],
+  "dest": "../../dist/packages/ng-dialog",
+  "assets": [".npmrc"],
   "lib": {
     "entryFile": "src/index.ts"
   }
