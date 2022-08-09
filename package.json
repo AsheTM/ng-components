@@ -12,6 +12,7 @@
   },
   "private": true,
   "devDependencies": {
+    "@nrwl/angular": "^14.5.4",
     "@nrwl/cli": "13.1.4",
     "@nrwl/eslint-plugin-nx": "13.1.4",
     "@nrwl/jest": "13.1.4",

@@ -4,13 +4,10 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/workspace:tsc",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@nrwl/angular:ng-packagr-lite",
       "options": {
-        "outputPath": "dist/packages/ng-dialog",
-        "main": "packages/ng-dialog/src/index.ts",
-        "tsConfig": "packages/ng-dialog/tsconfig.lib.json",
-        "assets": ["packages/ng-dialog/*.md"]
+        "project": "packages/ng-dialog",
+        "tsConfig": "packages/ng-dialog/tsconfig.lib.json"
       }
     },
     "lint": {
