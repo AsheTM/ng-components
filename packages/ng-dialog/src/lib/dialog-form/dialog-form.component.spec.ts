@@ -10,8 +10,7 @@ describe('DialogFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DialogFormComponent]
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -22,5 +21,12 @@ describe('DialogFormComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should create form type', () => {
+    expect(component.data).toBeDefined();
+    expect(component.type).toEqual('form');
+
+    expect(component.onOkClickEventHandler()).not.toThrow();
   });
 });
