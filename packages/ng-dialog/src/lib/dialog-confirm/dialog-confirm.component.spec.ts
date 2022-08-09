@@ -10,8 +10,7 @@ describe('DialogConfirmComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DialogConfirmComponent]
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -22,5 +21,12 @@ describe('DialogConfirmComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should create confirm type', () => {
+    expect(component.decision).toBeDefined();
+    expect(component.type).toEqual('confirm');
+
+    expect(component.onOkClickEventHandler()).not.toThrow();
   });
 });

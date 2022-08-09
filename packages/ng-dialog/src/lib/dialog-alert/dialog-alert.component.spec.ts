@@ -10,8 +10,7 @@ describe('DialogAlertComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DialogAlertComponent]
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -22,5 +21,11 @@ describe('DialogAlertComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should create alert type', () => {
+    expect(component.okLabel).toBeUndefined();
+    expect(component.template).toBeUndefined();
+    expect(component.type).toEqual('alert');
   });
 });
