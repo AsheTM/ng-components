@@ -60,7 +60,7 @@ export class DialogService {
     this._initInputs(componentRef, { body, closeLabel, okLabel, title });
     this._bindToDocument(componentRef);
     sharedDialogConfirmRef.onBeforeClose().subscribe({ complete: () => this._destroy(componentRef) });
-    sharedDialogConfirmRef.onBeforeDecision().subscribe({ complete: () => this._destroy(componentRef) });
+    // sharedDialogConfirmRef.onBeforeDecision().subscribe({ complete: () => this._destroy(componentRef) });
 
     return sharedDialogConfirmRef;
   }

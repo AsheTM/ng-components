@@ -17,17 +17,23 @@
     class="dialog-footer">
     <ng-container [ngSwitch]="type">
       <ng-template [ngSwitchCase]="'confirm'">
-        <button dialogButton="primary"
+        <button class="primary"
+          role="button"
+          tabindex="0"
           (click)="onOkClickEventHandler()">{{ okLabel }}</button>
       </ng-template>
 
       <ng-template [ngSwitchCase]="'form'">
-        <button dialogButton="primary"
+        <button class="primary"
+          role="button"
+          tabindex="0"
           (click)="onOkClickEventHandler()">{{ okLabel }}</button>
       </ng-template>
     </ng-container>
 
-    <button dialogButton
+    <button class="secondary"
+      role="button"
+      tabindex="0"
       (click)="onCloseClickEventHandler()">{{ closeLabel }}</button>
   </div>
 </div>

@@ -24,25 +24,25 @@ export class DialogModule {
     }
   }
 
-  static forRoot({
+  static forRoot(/*{
     color
   }: TDialogRootConfiguration = {
     color: {
       background: { },
       text: { }
     }
-  }): ModuleWithProviders<DialogRootModule> {
+  }*/): ModuleWithProviders<DialogRootModule> {
     return {
       ngModule:   DialogRootModule,
       providers:  [
         {
           provide:  DIALOG_TOKEN_INSTANCE,
           useValue: EDialogInstance.FOR_ROOT
-        }, {
-          provide: DIALOG_TOKEN_COLOR,
-          useValue: {
-            ...color
-          }
+        // }, {
+        //   provide: DIALOG_TOKEN_COLOR,
+        //   useValue: {
+        //     ...color
+        //   }
         },
 
         DialogService

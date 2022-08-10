@@ -1,13 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { DialogAlertComponent } from './dialog-alert.component';
-
-import { DialogCommonModule } from '../dialog-common.module';
 
 
 @NgModule({
   declarations: [DialogAlertComponent],
   exports:      [DialogAlertComponent],
-  imports:      [DialogCommonModule]
+  imports:      [CommonModule]
 })
 export class DialogAlertModule { }
