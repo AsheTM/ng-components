@@ -31,7 +31,7 @@ export class DialogService {
   openDialogAlert(title: string, body?: string, {
     closeLabel
   }: Record<'closeLabel', string> = {
-    closeLabel: 'Ok, j\'ai compris!'
+    closeLabel: 'Okey!'
   }): DialogRef {
     const componentRef: ComponentRef<DialogAlertComponent>
       = this._createComponentRef(DialogAlertComponent);
@@ -49,8 +49,8 @@ export class DialogService {
     closeLabel,
     okLabel
   }: Record<'closeLabel' | 'okLabel', string> = {
-    closeLabel: 'Fermer',
-    okLabel:    'J\'accepte'
+    closeLabel: 'Close',
+    okLabel:    'Okey'
   }): DialogConfirmRef {
     const componentRef: ComponentRef<DialogConfirmComponent>
       = this._createComponentRef(DialogConfirmComponent);
@@ -72,8 +72,8 @@ export class DialogService {
       closeLabel,
       okLabel
     }: Record<'closeLabel' | 'okLabel', string>  = {
-      closeLabel: 'Fermer',
-      okLabel:    'Confirmer'
+      closeLabel: 'Cancel',
+      okLabel:    'Submit'
     }
   ): DialogFormRef<U> {
     const sharedDialogFormComponentRef: ComponentRef<DialogFormComponent<U>>
