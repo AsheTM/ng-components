@@ -1,10 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { DialogFormBodyComponentDirective } from './dialog-form-body-component.directive';
 import { DialogFormComponent } from './dialog-form.component';
-
-import { DialogCommonModule } from '../dialog-common.module';
 
 
 @NgModule({
@@ -17,9 +16,8 @@ import { DialogCommonModule } from '../dialog-common.module';
     DialogFormBodyComponentDirective
   ],
   imports:      [
-    ReactiveFormsModule,
-
-    DialogCommonModule
+    CommonModule,
+    ReactiveFormsModule
   ]
 })
 export class DialogFormModule { }

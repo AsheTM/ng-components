@@ -1,13 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { DialogConfirmComponent } from './dialog-confirm.component';
-
-import { DialogCommonModule } from '../dialog-common.module';
 
 
 @NgModule({
   declarations: [DialogConfirmComponent],
   exports:      [DialogConfirmComponent],
-  imports:      [DialogCommonModule]
+  imports:      [CommonModule]
 })
 export class DialogConfirmModule { }
