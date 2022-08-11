@@ -40,3 +40,6 @@ Thumbs.db
 
 # Angular 14
 /.angular
+
+# Git Credentials
+*.git-credentials
