@@ -1,94 +1,170 @@
+<!-- ### LOOKING FOR MAINTAINER. PLEASE PING [@voronianski](https://twitter.com/voronianski)! -->
+# ngDialog
 
+<!-- [![build status](http://img.shields.io/travis/likeastore/ngDialog.svg)](https://travis-ci.org/likeastore/ngDialog) -->
+<!-- [![npm version](http://badge.fury.io/js/ng-dialog.svg)](http://badge.fury.io/js/ng-dialog) -->
+<!-- [![github tag](https://img.shields.io/github/tag/likeastore/ngDialog.svg)](https://github.com/likeastore/ngDialog/tags) -->
+<!-- [![Download Count](https://img.shields.io/npm/dm/ng-dialog.svg)](http://www.npmjs.com/package/ng-dialog) -->
+<!-- [![Code Climate](https://codeclimate.com/github/likeastore/ngDialog/badges/gpa.svg)](https://codeclimate.com/github/likeastore/ngDialog) -->
 
-# AshetmNgDialog
+> Modal dialogs and popups provider for [AngularJS](http://angularjs.org/) applications.
 
-This project was generated using [Nx](https://nx.dev).
+ngDialog is ~10KB (minified), has minimalistic API, is highly customizable through themes and has only AngularJS as dependency.
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+<!-- ### [Demo](http://likeastore.github.io/ngDialog) -->
 
-🔎 **Smart, Extensible Build Framework**
+## Install
 
-## Adding capabilities to your workspace
+You can install it with npm:
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+```bash
+npm install @ashetm/ng-dialog
+```
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+## Import
 
-Below are our core plugins:
+You only need to import ``DialogModule`` through ``forRoot`` static method.
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+```ts
+...
+import { DialogModule } from '@ashetm/ng-dialog';
+...
+@NgModule({
+  ...
+  imports: [
+    ...
+    DialogModule.forRoot(), 
+    ...
+  ]
+  ...
+})
+export class AppModule { }
+```
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+## Usage
 
-## Generate an application
+### DialogAlert
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
+The serviec to use is ``DialogService#openDialogAlert``, it's definition is:
 
-> You can use any of the plugins above to generate applications as well.
+```d.ts
+openDialogAlert(
+  title: string, 
+  body?: string, 
+  { closeLabel }?: Record<'closeLabel', string>
+): DialogRef;
+```
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+- 1st argument *title*, is the title of dialog (REQUIRED)
+- 2nd argument *body*, is the body of dialog (OPTIONAL) (DEFAULT - '')
+- 3rd argument *buttons*, is an object with closeLabel key to override the label of close button (OPTIONAL) (DEFAULT - closeLabel = 'Okey!)
 
-## Generate a library
+And it returns dialog reference ``DialogRef``, here is the exposed members:
 
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
+- ``type`` returns an ``EDialogType`` value with value of 'alert'
+- ``getInstanceId()`` returns a ``number`` of instance id
+- ``onBeforeClose(fn: () => boolean = () => true)`` returns ``Observable<void>`` and can pass a function handler to execute before closing, close the dialog alert if it returns true, else it stays opened
 
-> You can also use any of the plugins above to generate libraries as well.
+Example:
 
-Libraries are shareable across libraries and applications. They can be imported from `@@ashetm/ng-dialog/mylib`.
+```ts
+constructor(
+  ...
+  private readonly _dialogService: DialogService
+  ...
+) { }
 
-## Development server
+openAlert(): void {
+  this._dialogService.openDialogAlert('Sample Title');
+}
+```
 
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+### DialogConfirm
 
-## Code scaffolding
+The serviec to use is ``DialogService#openDialogConfirm``, it's definition is:
 
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
+```d.ts
+openDialogConfirm(
+  title: string, 
+  body?: string, 
+  { closeLabel, okLabel }?: Record<'closeLabel' | 'okLabel', string>
+): DialogConfirmRef;
+```
 
-## Build
+- 1st argument *title*, is the title of dialog (REQUIRED)
+- 2nd argument *body*, is the body of dialog (OPTIONAL) (DEFAULT - '')
+- 3rd argument *buttons*, is an object with closeLabel and okLabel keys to override the label of close button and okLabel (OPTIONAL) (DEFAULT - closeLabel = 'Close, okLabel = 'Okey')
 
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+And it returns dialog reference ``DialogConfirmRef``, here is the exposed members:
 
-## Running unit tests
+- ``type`` returns an ``EDialogType`` value with value of 'confirm'
+- ``getInstanceId()`` returns a ``number`` of instance id
+- ``onBeforeClose(fn: () => boolean = () => true)`` returns ``Observable<void>`` and can pass a function handler to execute before closing, close the dialog if it returns true, else it stays opened
+- ``onBeforeDecision(fn: (decision: boolean) => boolean = (decision: boolean) => true)`` returns ``Observable<boolean>`` observable that returns the decision made by the user/client and can pass a function handler to execute before closing, close the dialog if it returns true etlse it stays opened
 
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+Example:
 
-Run `nx affected:test` to execute the unit tests affected by a change.
+```ts
+constructor(
+  ...
+  private readonly _dialogService: DialogService
+  ...
+) { }
 
-## Running end-to-end tests
+openConfirm(): void {
+  this._dialogService.openDialogConfirm('Sample Title');
+}
+```
 
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
+### DialogForm
 
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
+The service to use is ``DialogService#openDialogForm``, it's definition is:
 
-## Understand your workspace
+```d.ts
+openDialogForm<T extends TemplateRef<unknown>, U = any>(
+  title: string, 
+  template: T, 
+  { closeLabel, okLabel }?: Record<'closeLabel' | 'okLabel', string>
+): DialogFormRef<U>;
+```
 
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
+- 1st argument *title*, is the title of dialog (REQUIRED)
+- 2nd argument *template*, is the body template of dialog (REQUIRED)
+- 3rd argument *buttons*, is an object with closeLabel and okLabel keys to override the label of close button and okLabel (OPTIONAL) (DEFAULT - closeLabel = 'Cancel, okLabel = 'Submit')
 
-## Further help
+And it returns dialog reference ``DialogFormRef<U>``, here is the exposed members:
 
-Visit the [Nx Documentation](https://nx.dev) to learn more.
+- ``type`` returns an ``EDialogType`` value with value of 'alert'
+- ``getInstanceId()`` returns a ``number`` of instance id
+- ``onBeforeClose(fn: () => boolean = () => true)`` returns ``Observable<void>`` and can pass a function handler to execute before closing, close the dialog alert if it returns true, else it stays opened
+- ``onBeforeData(fn: (data: U) => boolean = (_: U) => true)`` returns ``Observable<U>`` observable that returns the data of the form written by the user/client and can pass a function handler to execute before closing, close the dialog if it returns true etlse it stays opened
 
+It also needs to tag ``ng-template`` with the directive ``dialogFormBodyComponent``, that requires also to bind ``formGroup`` directive. And also take reference of that ``ng-template`` as ``DialogFormBodyComponent``.
 
+Example:
 
-## ☁ Nx Cloud
+```html
+...
+<ng-template #dialogFormBodyComponent="DialogFormBodyComponent" 
+  dialogFormBodyComponent
+  [formGroup]="formGroup">
+  Name: <input formControlName="name" />
+</ng-template>
+```
 
-### Distributed Computation Caching & Distributed Task Execution
+```ts
+...
+formGroup: FormGroup = new FormGroup({
+  name: new FormControl('Sample name')
+});
+...
+constructor(
+  ...
+  private readonly _dialogService: DialogService
+  ...
+) { }
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+openForm(template: DialogFormBodyComponentDirective): void {
+  this._dialogService.openDialogForm('Sample Title', template);
+}
+```
