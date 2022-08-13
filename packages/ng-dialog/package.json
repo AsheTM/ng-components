@@ -1,6 +1,18 @@
 {
   "name": "@ashetm/ng-dialog",
   "version": "3.0.1",
+  "contributors": [
+    {
+      "email": "contact@ashetm.com",
+      "name": "DAWOUD Haitham",
+      "url": "http://ashetm.com"
+    }
+  ],
+  "author": {
+    "email": "contact@ashetm.com",
+    "name": "DAWOUD Haitham",
+    "url": "http://ashetm.com"
+  },
   "peerDependencies": {
     "@angular/common": "^14.1.0",
     "@angular/core": "^14.1.0",
