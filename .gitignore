@@ -37,3 +37,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Angular 14
+/.angular
+
+# Git Credentials
+*.git-credentials

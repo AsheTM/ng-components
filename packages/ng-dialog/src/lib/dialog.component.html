@@ -1,0 +1,39 @@
+
+<div class="dialog">
+  <div *ngIf="title"
+    class="dialog-header">{{ title }}</div>
+
+  <div *ngIf="body || template"
+    class="dialog-body"
+    [ngSwitch]="type">
+    <ng-template *ngIf="template"
+      [ngSwitchCase]="'form'"
+      [ngTemplateOutlet]="template"></ng-template>
+
+    <ng-template [ngSwitchDefault]>{{ body }}</ng-template>
+  </div>
+
+  <div *ngIf="closeLabel || okLabel"
+    class="dialog-footer">
+    <ng-container [ngSwitch]="type">
+      <ng-template [ngSwitchCase]="'confirm'">
+        <button class="primary"
+          role="button"
+          tabindex="0"
+          (click)="onOkClickEventHandler()">{{ okLabel }}</button>
+      </ng-template>
+
+      <ng-template [ngSwitchCase]="'form'">
+        <button class="primary"
+          role="button"
+          tabindex="0"
+          (click)="onOkClickEventHandler()">{{ okLabel }}</button>
+      </ng-template>
+    </ng-container>
+
+    <button class="secondary"
+      role="button"
+      tabindex="0"
+      (click)="onCloseClickEventHandler()">{{ closeLabel }}</button>
+  </div>
+</div>

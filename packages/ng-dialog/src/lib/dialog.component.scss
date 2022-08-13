@@ -1,0 +1,97 @@
+@import '../scss/all';
+
+@import './dialog.variable';
+
+
+:host{
+  .dialog{
+    $color-shadow-primary: #0005;
+    $section-height: 54px;
+    @include size(30%, auto);
+    @include flex-col;
+    max-width: 1200px;
+    min-width: 400px;
+    background-color: #fafafa;
+    font-family: 'Lato';
+    border-radius: 2px;
+    box-shadow: 0 1px 24px 1px $color-shadow-primary;
+    box-sizing: border-box;
+    overflow: hidden;
+    &-body{
+      @include flex-col;
+      flex-grow: 1;
+      margin: 16px 24px;
+      order: 2;
+    }
+    &-footer{
+      @include size(100%, $section-height);
+      @include flex-row;
+      align-items: center;
+      justify-content: space-around;
+      order: 3;
+      :not(button){
+        display: none;
+      }
+      button{
+        $button-color-border: #0011;
+        @include size(auto, 100%);
+        @include flex-row;
+        max-width: 100%;
+        min-width: 110px;
+        min-height: 36px;
+        flex-grow: 1;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-family: Lato;
+        font-weight: 300;
+        line-height: 1.2;
+        padding: 8px 16px;
+        border: 0 solid $button-color-border;
+        border-radius: 0;
+        margin: 0;
+        box-sizing: border-box;
+        box-shadow: 0px 0px 0px $color-shadow-primary;
+        filter: saturate(1);
+        transition:
+            background-color .15s linear,
+            color .25s ease-in-out,
+            border .15s linear,
+            box-shadow .15s linear,
+            filter .1s linear;
+        cursor: pointer;
+        &:hover{
+          filter: saturate(.8);
+        }
+        &:focus{
+          border: 1px solid $button-color-border;
+          box-shadow: 0px 0px 3px $color-shadow-primary;
+          filter: saturate(.5);
+        }
+        &.primary{
+          background-color: #1976d2;
+          color: #fefeff;
+        }
+        &.secondary{
+          background-color: #fefeff;
+          color: #333c;
+        }
+      }
+    }
+    &-header{
+      @include size(auto, $section-height);
+      @include flex-row;
+      align-items: center;
+      font-size: 24px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding-inline: 24px;
+      margin: {
+        top: 5px;
+        inline: 16px;
+      };
+      border-bottom: .5px solid #0002;
+      order: 1;
+    }
+  }
+}

@@ -1,0 +1,58 @@
+// @import '../../scss/all';
+
+// @import '../dialog.variable.scss';
+
+
+// :host(button[dialogButton]){
+//   &::before{
+//     @keyframes ButtonLoading {
+//       to {
+//         transform: rotateZ(1turn) translateX(50%) translateY(-50%);
+//       }
+//     }
+//     content: '';
+//     position: absolute;
+//     top: 50%;
+//     right: 50%;
+//     opacity: 0;
+//     transform: rotateZ(0turn) translateX(50%) translateY(-50%);
+//     transform-origin: 100% 0%;
+//     transition: opacity .15s ease-in-out;
+//     animation-name: ButtonLoading;
+//     animation-duration: .5s;
+//     animation-fill-mode: forwards;
+//     animation-iteration-count: infinite;
+//     animation-play-state: paused;
+//     animation-timing-function: linear;
+//   }
+//   &.disabled{
+//     // background-color: $dialog-color-background-secondary;
+//     // color: $dialog-color-text-main;
+//     border-width: 0;
+//     filter: saturate(0);
+//     pointer-events: none;
+//     cursor: not-allowed;
+//     user-select: none;
+//   }
+//   &.is-loading{
+//     // color: rgba($dialog-color-text-main, 0) !important;
+//     pointer-events: none;
+//     user-select: none;
+//     &::before{
+//       @include size(24px);
+//       display: inline-flex;
+//       opacity: 1;
+//       border: 3px solid transparent {
+//         top-color: white;
+//         bottom-color: white;
+//       };
+//       border-radius: 100%;
+//       animation-play-state: running;
+//     }
+//   }
+//   &.error{
+//     background-color: #f02323;
+//     // background-color: $dialog-color-background-error;
+//     // color: $dialog-color-text-main;
+//   }
+// }

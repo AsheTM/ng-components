@@ -1,15 +1,71 @@
 {
   "name": "@ashetm/ng-dialog",
   "version": "0.0.0",
+  "contributors": [
+    {
+      "email": "contact@ashetm.com",
+      "name": "DAWOUD Haitham",
+      "url": "http://ashetm.com"
+    }
+  ],
+  "author": {
+    "email": "contact@ashetm.com",
+    "name": "DAWOUD Haitham",
+    "url": "http://ashetm.com"
+  },
+  "keywords": [
+    "alert",
+    "angular",
+    "component",
+    "confirm",
+    "dialog",
+    "form",
+    "material",
+    "modal",
+    "modals",
+    "ng-dialog",
+    "ng",
+    "ngx",
+    "popup",
+    "popups",
+    "service",
+    "ui"
+  ],
   "license": "MIT",
-  "scripts": {},
-  "private": true,
+  "scripts": {
+    "build": "npm run lint && npm run test && nx build ng-dialog",
+    "lint": "nx lint ng-dialog --format stylish",
+    "lint:fix": "npm run lint -- --fix",
+    "package": "npm run build && cd ./dist/packages/ng-dialog && npm pack",
+    "publish": "cd ./dist/packages/ng-dialog && npm publish --access=public",
+    "test": "nx test ng-dialog --browsers ChromeHeadless --watch false"
+  },
+  "private": false,
   "devDependencies": {
+    "@nrwl/angular": "^14.5.4",
     "@nrwl/cli": "13.1.4",
+    "@nrwl/eslint-plugin-nx": "13.1.4",
+    "@nrwl/jest": "13.1.4",
+    "@nrwl/linter": "13.1.4",
     "@nrwl/tao": "13.1.4",
     "@nrwl/workspace": "13.1.4",
+    "@types/jest": "27.0.2",
     "@types/node": "14.14.33",
+    "@typescript-eslint/eslint-plugin": "~4.33.0",
+    "@typescript-eslint/parser": "~4.33.0",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "8.1.0",
+    "jest": "27.2.3",
+    "ng-packagr": "^14.1.0",
     "prettier": "^2.3.1",
-    "typescript": "~4.3.5"
+    "ts-jest": "27.0.5",
+    "typescript": "~4.7.2"
+  },
+  "dependencies": {
+    "@angular/common": "^14.1.0",
+    "@angular/core": "^14.1.0",
+    "@angular/forms": "^14.1.0",
+    "rxjs": "~7.5.0",
+    "tslib": "^2.3.0"
   }
 }

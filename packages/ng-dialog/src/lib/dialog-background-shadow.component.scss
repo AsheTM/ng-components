@@ -1,0 +1,43 @@
+@import '../scss/all';
+
+@import './dialog.variable';
+
+
+:host{
+  @keyframes Appear {
+    0% {
+      opacity: 0;
+      backdrop-filter: blur(0);
+    }
+    100% {
+      opacity: 1;
+      backdrop-filter: blur(2px);
+    }
+  }
+  @include pos(fixed, 0, 0, 0, 0);
+  @include flex-col;
+  align-items: center;
+  justify-content: center;
+  background-color: #0006;
+  animation-name: Appear;
+  animation-duration: $animation-duration;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  &.close{
+    @keyframes Disappear {
+      0% {
+        opacity: 1;
+        backdrop-filter: blur(2px);
+      }
+      100% {
+        opacity: 0;
+        backdrop-filter: blur(0);
+      }
+    }
+    animation-name: Disappear;
+    animation-direction: alternate;
+    animation-fill-mode: backwards;
+    animation-delay: $animation-duration / 3;
+    pointer-events: none;
+  }
+}
