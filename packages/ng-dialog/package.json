@@ -13,6 +13,24 @@
     "name": "DAWOUD Haitham",
     "url": "http://ashetm.com"
   },
+  "keywords": [
+    "alert",
+    "angular",
+    "component",
+    "confirm",
+    "dialog",
+    "form",
+    "material",
+    "modal",
+    "modals",
+    "ng-dialog",
+    "ng",
+    "ngx",
+    "popup",
+    "popups",
+    "service",
+    "ui"
+  ],
   "peerDependencies": {
     "@angular/common": "^14.1.0",
     "@angular/core": "^14.1.0",
