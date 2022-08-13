@@ -1,6 +1,18 @@
 {
   "name": "@ashetm/ng-dialog",
   "version": "0.0.0",
+  "contributors": [
+    {
+      "email": "contact@ashetm.com",
+      "name": "DAWOUD Haitham",
+      "url": "http://ashetm.com"
+    }
+  ],
+  "author": {
+    "email": "contact@ashetm.com",
+    "name": "DAWOUD Haitham",
+    "url": "http://ashetm.com"
+  },
   "license": "MIT",
   "scripts": {
     "build": "npm run lint && npm run test && nx build ng-dialog",
