@@ -10,7 +10,7 @@
     "publish": "cd ./dist/ng-dialog && npm publish",
     "test": "nx test ng-dialog --browsers ChromeHeadless --watch false"
   },
-  "private": true,
+  "private": false,
   "devDependencies": {
     "@nrwl/angular": "^14.5.4",
     "@nrwl/cli": "13.1.4",
