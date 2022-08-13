@@ -7,7 +7,7 @@
     "lint": "nx lint ng-dialog --format stylish",
     "lint:fix": "npm run lint -- --fix",
     "package": "npm run build && cd ./dist/packages/ng-dialog && npm pack",
-    "publish": "cd ./dist/packages/ng-dialog && npm publish",
+    "publish": "cd ./dist/packages/ng-dialog && npm publish --access=public",
     "test": "nx test ng-dialog --browsers ChromeHeadless --watch false"
   },
   "private": false,
