@@ -15,12 +15,18 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npm run lint && npm run test && nx build ng-dialog",
-    "lint": "nx lint ng-dialog --format stylish",
-    "lint:fix": "npm run lint -- --fix",
-    "package": "npm run build && cd ./dist/packages/ng-dialog && npm pack",
-    "publish": "cd ./dist/packages/ng-dialog && npm publish --access=public",
-    "test": "nx test ng-dialog --browsers ChromeHeadless --watch false"
+    "build:ng-dialog": "npm run lint:ng-dialog && npm run test:ng-dialog && nx build ng-dialog",
+    "build:ng-wallet-components": "npm run lint:ng-wallet-components && npm run test:ng-wallet-components && nx build ng-wallet-components",
+    "lint:ng-dialog": "nx lint ng-dialog --format stylish",
+    "lint:ng-wallet-components": "nx lint ng-wallet-components --format stylish",
+    "lint:ng-dialog:fix": "npm run lint:ng-dialog -- --fix",
+    "lint:ng-wallet-components:fix": "npm run lint:ng-wallet-components -- --fix",
+    "package:ng-dialog": "npm run build:ng-dialog && cd ./dist/packages/ng-dialog && npm pack",
+    "package:ng-wallet-components": "npm run build:ng-wallet-components && cd ./dist/packages/ng-wallet-components && npm pack",
+    "publish:ng-dialog": "cd ./dist/packages/ng-dialog && npm publish --access=public",
+    "publish:ng-wallet-components": "cd ./dist/packages/ng-wallet-components && npm publish --access=public",
+    "test:ng-dialog": "nx test ng-dialog --browsers ChromeHeadless --watch false",
+    "test:ng-wallet-components": "nx test ng-wallet-components --browsers ChromeHeadless --watch false"
   },
   "private": false,
   "devDependencies": {
