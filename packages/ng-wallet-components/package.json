@@ -1,4 +1,9 @@
 {
   "name": "@ashetm/ng-wallet-components",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "author": {
+    "email": "contact@ashetm.com",
+    "name": "DAWOUD Haitham",
+    "url": "http://ashetm.com"
+  }
 }
