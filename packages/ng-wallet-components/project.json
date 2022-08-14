@@ -1,0 +1,30 @@
+{
+  "root": "packages/ng-wallet-components",
+  "sourceRoot": "packages/ng-wallet-components/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "options": {
+        "project": "packages/ng-wallet-components",
+        "tsConfig": "packages/ng-wallet-components/tsconfig.lib.json"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/ng-wallet-components/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/ng-wallet-components"],
+      "options": {
+        "jestConfig": "packages/ng-wallet-components/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

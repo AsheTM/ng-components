@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
-    "ng-dialog": "packages/ng-dialog"
+    "ng-dialog": "packages/ng-dialog",
+    "ng-wallet-components": "packages/ng-wallet-components"
   }
 }

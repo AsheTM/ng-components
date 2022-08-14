@@ -15,7 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ashetm/ng-dialog": ["packages/ng-dialog/src/index.ts"]
+      "@ashetm/ng-dialog": ["packages/ng-dialog/src/index.ts"],
+      "@ashetm/ng-wallet-components": [
+        "packages/ng-wallet-components/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
