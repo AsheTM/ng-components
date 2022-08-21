@@ -4,7 +4,7 @@ import { ADialogComponent } from '../dialog.component';
 
 
 @Component({
-  selector:         'ashetm-dialog-alert',
+  selector:         '<!-- DO INSTANCIATE IT -->',
   templateUrl:      '../dialog.component.html',
   styleUrls:        [
     '../dialog-background-shadow.component.scss',

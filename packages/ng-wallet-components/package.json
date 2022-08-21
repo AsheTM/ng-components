@@ -13,5 +13,12 @@
     "name": "DAWOUD Haitham",
     "url": "http://ashetm.com"
   },
-  "private": false
+  "private": false,
+  "peerDependencies": {
+    "@angular/common": "^14.1.0",
+    "@angular/core": "^14.1.0",
+    "@angular/form": "^14.1.0",
+    "@ashetm/ng-ether": "^0.1.2",
+    "rxjs": "~7.5.0"
+  }
 }

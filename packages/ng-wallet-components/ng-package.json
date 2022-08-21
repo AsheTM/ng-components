@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/packages/ng-dialog",
+  "dest": "../../dist/packages/ng-wallet-components",
   "assets": [".npmrc"],
   "lib": {
     "entryFile": "src/index.ts"
