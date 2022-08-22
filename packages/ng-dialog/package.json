@@ -35,7 +35,7 @@
   "peerDependencies": {
     "@angular/common": ">=12",
     "@angular/core": ">=12",
-    "@angular/form": ">=12",
+    "@angular/forms": ">=12",
     "rxjs": ">=6.5"
   },
   "dependencies": {
