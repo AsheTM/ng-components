@@ -4,7 +4,7 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/angular:ng-packagr-lite",
+      "executor": "@nrwl/angular:package",
       "options": {
         "project": "packages/ng-dialog",
         "tsConfig": "packages/ng-dialog/tsconfig.lib.json"
