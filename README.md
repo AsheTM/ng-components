@@ -1,5 +1,11 @@
-<!-- ### LOOKING FOR MAINTAINER. PLEASE PING [@voronianski](https://twitter.com/voronianski)! -->
+
 # @ashetm/ng-components
+
+This mono repository contains multiple library/package, check README.md of each one of them: 
+
+* [README @ashetm/ng-dialog](https://github.com/AsheTM/ng-components/blob/main/packages/ng-dialog/README.md)
+
+<!-- ### LOOKING FOR MAINTAINER. PLEASE PING [@voronianski](https://twitter.com/voronianski)! -->
 
 <!-- [![build status](http://img.shields.io/travis/likeastore/ngDialog.svg)](https://travis-ci.org/likeastore/ngDialog) -->
 <!-- [![npm version](http://badge.fury.io/js/ng-dialog.svg)](http://badge.fury.io/js/ng-dialog) -->
@@ -8,7 +14,3 @@
 <!-- [![Code Climate](https://codeclimate.com/github/likeastore/ngDialog/badges/gpa.svg)](https://codeclimate.com/github/likeastore/ngDialog) -->
 
 <!-- ### [Demo](http://likeastore.github.io/ngDialog) -->
-
-This mono repository contains multiple library/package, check README.md of each one of them: 
-
-* [README @ashetm/ng-dialog](https://github.com/AsheTM/ng-components/blob/main/packages/ng-dialog/README.md)
