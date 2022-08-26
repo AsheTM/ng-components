@@ -1,3 +1,7 @@
+# 3.0.6
+
+- [x] Add repository url in package.json of ng-dialog
+
 # 3.0.5
 
 - [x] Create CHANGELOG.md
