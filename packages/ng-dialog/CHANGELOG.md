@@ -1,6 +1,6 @@
-# 1*.0.0
+# 14.0.0
 
-- [x] Support ng-dialog for Angular 1*
+- [x] Support ng-dialog for Angular 14
 
 # 3.0.6
 
