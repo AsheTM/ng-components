@@ -1,13 +1,13 @@
-# 1*.0.1
+# 15.0.1
 
 - [x] Fix issue of not able to prevent close event
 - [x] Fix issue of not able to prevent confirm event
 - [x] Fix issue of not able to prevent data event
 - [x] Fix issue of not able to prevent with 2 events simultaneously
 
-# 1*.0.0
+# 15.0.0
 
-- [x] Support ng-dialog for Angular 1*
+- [x] Support ng-dialog for Angular 14
 
 # 14.0.0
 
