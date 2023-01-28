@@ -14,3 +14,5 @@ This mono repository contains multiple library/package, check README.md of each 
 <!-- [![Code Climate](https://codeclimate.com/github/likeastore/ngDialog/badges/gpa.svg)](https://codeclimate.com/github/likeastore/ngDialog) -->
 
 <!-- ### [Demo](http://likeastore.github.io/ngDialog) -->
+
+> **NB:** No more support for Angular 13 and below
