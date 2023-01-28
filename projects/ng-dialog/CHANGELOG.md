@@ -1,3 +1,7 @@
+# 1*.0.2
+
+- [x] Fix peer dependencies version
+
 # 1*.0.1
 
 - [x] Fix issue of not able to prevent close event
