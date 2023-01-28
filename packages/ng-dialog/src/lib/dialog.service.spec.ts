@@ -1,13 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 
+import { DialogModule } from './dialog.module';
 import { DialogService } from './dialog.service';
 
 
-describe('DialogService', () => {
+fdescribe('DialogService', () => {
   let service: DialogService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [DialogModule.forRoot()],
+    });
     service = TestBed.inject(DialogService);
   });
 

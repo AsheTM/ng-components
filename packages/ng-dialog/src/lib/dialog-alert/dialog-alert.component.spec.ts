@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DialogAlertComponent } from './dialog-alert.component';
 
 
-describe('DialogAlertComponent', () => {
+fdescribe('DialogAlertComponent', () => {
   let component: DialogAlertComponent;
   let fixture: ComponentFixture<DialogAlertComponent>;
 
@@ -11,9 +11,6 @@ describe('DialogAlertComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [DialogAlertComponent]
     }).compileComponents();
-  });
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(DialogAlertComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

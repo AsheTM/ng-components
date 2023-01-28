@@ -22,6 +22,7 @@
       "outputs": ["coverage/packages/ng-dialog"],
       "options": {
         "jestConfig": "packages/ng-dialog/jest.config.js",
+        "tsConfig": "packages/ng-dialog/tsconfig.spec.json",
         "passWithNoTests": true
       }
     }
