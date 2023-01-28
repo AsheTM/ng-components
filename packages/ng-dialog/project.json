@@ -19,10 +19,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/ng-dialog"],
       "options": {
-        "jestConfig": "packages/ng-dialog/jest.config.js",
-        "passWithNoTests": true
+        "jestConfig": "packages/ng-dialog/jest.config.ts",
+        "tsConfig": "packages/ng-dialog/tsconfig.spec.json"
       }
     }
   },
