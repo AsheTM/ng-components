@@ -15,11 +15,16 @@
   },
   "license": "MIT",
   "scripts": {
+    "build:ng-components-demo": "npm run lint:ng-components-demo && npm run test:ng-components-demo && nx build ng-components-demo",
     "build:ng-dialog": "npm run lint:ng-dialog && npm run test:ng-dialog && nx build ng-dialog",
+    "lint:ng-components-demo": "nx lint ng-components-demo --format stylish",
+    "lint:ng-components-demo:fix": "npm run lint:ng-components-demo -- --fix",
     "lint:ng-dialog": "nx lint ng-dialog --format stylish",
     "lint:ng-dialog:fix": "npm run lint:ng-dialog -- --fix",
     "package:ng-dialog": "npm run build:ng-dialog && cd ./dist/packages/ng-dialog && npm pack",
     "publish:ng-dialog": "cd ./dist/packages/ng-dialog && npm publish --access=public",
+    "start:ng-components-demo": "nx serve ng-components-demo -- --open",
+    "test:ng-components-demo": "nx test ng-components-demo --browsers ChromeHeadless --watch false",
     "test:ng-dialog": "nx test ng-dialog --browsers ChromeHeadless --watch false"
   },
   "private": false,
