@@ -40,7 +40,8 @@ export class DialogService {
 
     this._initInputs(componentRef, { body, closeLabel, title });
     this._bindToDocument(componentRef);
-    sharedDialogAlertRef.onBeforeClose().subscribe({ complete: () => this._destroy(componentRef) });
+    sharedDialogAlertRef.onBeforeClose(() => false)
+      .subscribe({ complete: () => this._destroy(componentRef) });
 
     return sharedDialogAlertRef;
   }
@@ -59,7 +60,8 @@ export class DialogService {
 
     this._initInputs(componentRef, { body, closeLabel, okLabel, title });
     this._bindToDocument(componentRef);
-    sharedDialogConfirmRef.onBeforeClose().subscribe({ complete: () => this._destroy(componentRef) });
+    sharedDialogConfirmRef.onBeforeClose(() => false)
+      .subscribe({ complete: () => this._destroy(componentRef) });
     // sharedDialogConfirmRef.onBeforeDecision().subscribe({ complete: () => this._destroy(componentRef) });
 
     return sharedDialogConfirmRef;
@@ -83,7 +85,8 @@ export class DialogService {
 
     this._initInputs(sharedDialogFormComponentRef, { closeLabel, okLabel, template, title });
     this._bindToDocument(sharedDialogFormComponentRef);
-    sharedDialogFormRef.onBeforeClose().subscribe({ complete: () => this._destroy(sharedDialogFormComponentRef) });
+    sharedDialogFormRef.onBeforeClose(() => false)
+      .subscribe({ complete: () => this._destroy(sharedDialogFormComponentRef) });
     sharedDialogFormRef.onBeforeData().subscribe({ complete: () => this._destroy(sharedDialogFormComponentRef) });
 
     return sharedDialogFormRef;
