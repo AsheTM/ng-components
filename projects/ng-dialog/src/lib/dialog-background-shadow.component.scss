@@ -37,7 +37,7 @@
     animation-name: Disappear;
     animation-direction: alternate;
     animation-fill-mode: backwards;
-    animation-delay: $animation-duration / 3;
+    animation-delay: calc($animation-duration / 3); // or math.div
     pointer-events: none;
   }
 }
