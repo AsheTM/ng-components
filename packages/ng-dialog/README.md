@@ -2,7 +2,7 @@
 
 This library provide a unique UI of 3 types of dialog; alert, confirm and form.
 
-*It works with Angular 12 and above.*
+*Only Angular 14 and above are available.*
 <!-- ### LOOKING FOR MAINTAINER. PLEASE PING [@voronianski](https://twitter.com/voronianski)! -->
 
 <!-- [![build status](http://img.shields.io/travis/likeastore/ngDialog.svg)](https://travis-ci.org/likeastore/ngDialog) -->

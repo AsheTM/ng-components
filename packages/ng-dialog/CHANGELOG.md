@@ -1,3 +1,7 @@
+# 1*.0.0
+
+- [x] Support ng-dialog for Angular 1*
+
 # 3.0.6
 
 - [x] Add repository url in package.json of ng-dialog

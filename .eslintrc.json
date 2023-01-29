@@ -24,7 +24,10 @@
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
+      "rules": {
+        "prefer-const": "warn",
+        "@typescript-eslint/prefer-as-const": "warn"
+      }
     },
     {
       "files": ["*.js", "*.jsx"],
