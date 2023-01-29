@@ -1,5 +1,5 @@
 {
-  "root": "packages/ng-dialog",
+  "name": "ng-dialog",
   "sourceRoot": "packages/ng-dialog/src",
   "projectType": "library",
   "targets": {

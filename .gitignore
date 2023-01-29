@@ -43,3 +43,5 @@ Thumbs.db
 
 # Git Credentials
 *.git-credentials
+
+.angular
