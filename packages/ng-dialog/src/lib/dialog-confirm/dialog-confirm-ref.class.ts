@@ -9,7 +9,7 @@ import { EDialogType } from '../dialog.enum';
 
 export class DialogConfirmRef extends DialogRef {
 
-  readonly type: EDialogType.CONFIRM = EDialogType.CONFIRM;
+  override readonly type: EDialogType.CONFIRM = EDialogType.CONFIRM;
 
   constructor(private readonly _dialogConfirmComponent: DialogConfirmComponent) {
     super(_dialogConfirmComponent);

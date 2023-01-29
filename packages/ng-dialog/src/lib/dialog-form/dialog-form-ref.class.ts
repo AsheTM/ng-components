@@ -9,7 +9,7 @@ import { EDialogType } from '../dialog.enum';
 
 export class DialogFormRef<T> extends DialogRef {
 
-  readonly type: EDialogType.FORM = EDialogType.FORM;
+  override readonly type: EDialogType.FORM = EDialogType.FORM;
 
   constructor(private readonly _dialogFormComponent: DialogFormComponent<T>) {
     super(_dialogFormComponent);
