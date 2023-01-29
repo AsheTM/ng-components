@@ -1,6 +1,40 @@
 {
   "name": "@ashetm/ng-input",
   "version": "0.0.1",
+  "contributors": [
+    {
+      "email": "contact@ashetm.com",
+      "name": "DAWOUD Haitham",
+      "url": "http://ashetm.com"
+    }
+  ],
+  "author": {
+    "email": "contact@ashetm.com",
+    "name": "DAWOUD Haitham",
+    "url": "http://ashetm.com"
+  },
+  "keywords": [
+    "alert",
+    "angular",
+    "component",
+    "confirm",
+    "dialog",
+    "form",
+    "material",
+    "modal",
+    "modals",
+    "ng-dialog",
+    "ng",
+    "ngx",
+    "popup",
+    "popups",
+    "service",
+    "ui"
+  ],
+  "private": false,
+  "repository": {
+    "url": "https://github.com/AsheTM/ng-components/tree/release/%40ashetm/ng-input/projects/ng-input"
+  },
   "peerDependencies": {
     "@angular/common": "^15.1.0",
     "@angular/core": "^15.1.0"
