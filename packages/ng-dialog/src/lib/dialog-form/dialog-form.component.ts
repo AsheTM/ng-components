@@ -35,9 +35,10 @@ export class DialogFormComponent<U = unknown> extends ADialogComponent<DialogFor
   }
 
   override onOkClickEventHandler(): void {
-    const formGroup: FormGroup = this.template.formGroup;
-    const rawValue: U         = formGroup.getRawValue();
+    const formGroup:  FormGroup = this.template.formGroup;
+    const rawValue:   U         = formGroup.getRawValue();
 
+    this.close.emit();
     this.data.emit(rawValue);
   }
 
