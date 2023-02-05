@@ -1,1 +1,26 @@
-<ashetm-ng-dialog-demo-nx-welcome></ashetm-ng-dialog-demo-nx-welcome>
+
+<button (click)="openAlert()">Open Alert</button>
+
+<br>
+<br>
+
+<button (click)="openConfirm()">Open Confirm</button>
+
+<br>
+<br>
+
+<ng-template #DialogFormBodyComponent="DialogFormBodyComponent"
+  dialogFormBodyComponent
+  [formGroup]="formGroup">
+  <p>
+    <span>Text Input: </span>
+
+    <input formControlName="text"
+      type="text" />
+  </p>
+</ng-template>
+
+<button (click)="openForm(DialogFormBodyComponent)">Open Form</button>
+
+<p>Result: {{ ((formGroup.valueChanges | async) || formGroup.value) | json }}</p>
+

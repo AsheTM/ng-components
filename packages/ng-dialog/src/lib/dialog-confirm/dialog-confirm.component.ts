@@ -23,12 +23,12 @@ export class DialogConfirmComponent extends ADialogComponent {
   closeLabel!: string;
   okLabel!: string;
 
-  onCloseClickEventHandler(): void {
+  override onCloseClickEventHandler(): void {
     this.close.emit();
     this.decision.emit(false);
   }
 
-  onOkClickEventHandler(): void {
+  override onOkClickEventHandler(): void {
     this.close.emit();
     this.decision.emit(true);
   }

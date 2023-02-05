@@ -23,9 +23,10 @@ export class DialogFormComponent<U = unknown> extends ADialogComponent<DialogFor
 
   readonly type: 'form' = 'form';
 
+  override template!: DialogFormBodyComponentDirective;
+
   closeLabel!: string;
   okLabel!: string;
-  template!: DialogFormBodyComponentDirective;
 
   ngOnChanges({ template }: SimpleChanges): void {
     if(!!template && !(template instanceof DialogFormBodyComponentDirective)) {
@@ -33,10 +34,11 @@ export class DialogFormComponent<U = unknown> extends ADialogComponent<DialogFor
     }
   }
 
-  onOkClickEventHandler(): void {
-    const formGroup: FormGroup = this.template.formGroup;
-    const rawValue: U         = formGroup.getRawValue();
+  override onOkClickEventHandler(): void {
+    const formGroup:  FormGroup = this.template.formGroup;
+    const rawValue:   U         = formGroup.getRawValue();
 
+    this.close.emit();
     this.data.emit(rawValue);
   }
 

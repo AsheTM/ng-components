@@ -4,18 +4,17 @@ import {
   ComponentFactoryResolver,
   ComponentRef,
   EmbeddedViewRef,
-  Inject,
   Injectable,
   Injector,
   TemplateRef,
   Type
 } from '@angular/core';
+import { forkJoin } from 'rxjs';
 
-import { DialogRef } from './dialog-ref.class';
 import { ADialogComponent } from './dialog.component';
 import { IDialogComponent } from './dialog.interface';
 
-import { DialogAlertComponent } from './dialog-alert';
+import { DialogAlertComponent, DialogAlertRef } from './dialog-alert';
 import { DialogConfirmComponent, DialogConfirmRef } from './dialog-confirm';
 import { DialogFormComponent, DialogFormRef } from './dialog-form';
 
@@ -32,15 +31,16 @@ export class DialogService {
     closeLabel
   }: Record<'closeLabel', string> = {
     closeLabel: 'Okey!'
-  }): DialogRef {
+  }): DialogAlertRef {
     const componentRef: ComponentRef<DialogAlertComponent>
       = this._createComponentRef(DialogAlertComponent);
-    const sharedDialogAlertRef: DialogRef
-      = new DialogRef(componentRef.instance);
+    const sharedDialogAlertRef: DialogAlertRef
+      = new DialogAlertRef(componentRef.instance);
 
     this._initInputs(componentRef, { body, closeLabel, title });
     this._bindToDocument(componentRef);
-    sharedDialogAlertRef.onBeforeClose().subscribe({ complete: () => this._destroy(componentRef) });
+    sharedDialogAlertRef.onBeforeClose(() => false)
+      .subscribe({ complete: () => this._destroy(componentRef) });
 
     return sharedDialogAlertRef;
   }
@@ -59,8 +59,10 @@ export class DialogService {
 
     this._initInputs(componentRef, { body, closeLabel, okLabel, title });
     this._bindToDocument(componentRef);
-    sharedDialogConfirmRef.onBeforeClose().subscribe({ complete: () => this._destroy(componentRef) });
-    // sharedDialogConfirmRef.onBeforeDecision().subscribe({ complete: () => this._destroy(componentRef) });
+    forkJoin([
+      sharedDialogConfirmRef.onBeforeClose(() => false),
+      sharedDialogConfirmRef.onBeforeDecision(() => false)
+    ]).subscribe({ complete: () => this._destroy(componentRef) });
 
     return sharedDialogConfirmRef;
   }
@@ -83,8 +85,10 @@ export class DialogService {
 
     this._initInputs(sharedDialogFormComponentRef, { closeLabel, okLabel, template, title });
     this._bindToDocument(sharedDialogFormComponentRef);
-    sharedDialogFormRef.onBeforeClose().subscribe({ complete: () => this._destroy(sharedDialogFormComponentRef) });
-    sharedDialogFormRef.onBeforeData().subscribe({ complete: () => this._destroy(sharedDialogFormComponentRef) });
+    forkJoin([
+      sharedDialogFormRef.onBeforeClose(() => false),
+      sharedDialogFormRef.onBeforeData(() => false)
+    ]).subscribe({ complete: () => this._destroy(sharedDialogFormComponentRef) });
 
     return sharedDialogFormRef;
   }
