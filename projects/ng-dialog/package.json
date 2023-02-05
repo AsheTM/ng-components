@@ -36,9 +36,9 @@
     "url": "https://github.com/AsheTM/ng-components/tree/main/packages/ng-dialog"
   },
   "peerDependencies": {
-    "@angular/common": ">=1*",
-    "@angular/core": ">=1*",
-    "@angular/forms": ">=1*",
+    "@angular/common": ">=14",
+    "@angular/core": ">=14",
+    "@angular/forms": ">=14",
     "rxjs": ">=6.5"
   },
   "dependencies": {
