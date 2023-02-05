@@ -1,7 +1,0 @@
-{
-  "version": 2,
-  "projects": {
-    "ng-components-demo": "packages/ng-components-demo",
-    "ng-dialog": "packages/ng-dialog"
-  }
-}
