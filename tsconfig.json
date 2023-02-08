@@ -18,8 +18,8 @@
       "@ashetm/ng-dialog": [
         "dist/ng-dialog"
       ],
-      "ng-dialog": [
-        "dist/ng-dialog"
+      "@ashetm/ng-input": [
+        "dist/ng-input"
       ]
     },
     "target": "es2020",

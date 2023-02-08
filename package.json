@@ -16,15 +16,21 @@
   "scripts": {
     "build:ng-components-demo": "npm run lint:ng-components-demo & npm run test:ng-components-demo & ng build ng-components-demo",
     "build:ng-dialog": "npm run lint:ng-dialog & npm run test:ng-dialog & ng build ng-dialog",
+    "build:ng-input": "npm run lint:ng-input & npm run test:ng-input & ng build ng-input",
     "lint:ng-components-demo": "ng lint ng-components-demo --format stylish",
     "lint:ng-components-demo:fix": "npm run lint:ng-components-demo -- --fix",
     "lint:ng-dialog": "ng lint ng-dialog --format stylish",
     "lint:ng-dialog:fix": "npm run lint:ng-dialog -- --fix",
+    "lint:ng-input": "ng lint ng-input --format stylish",
+    "lint:ng-input:fix": "npm run lint:ng-input -- --fix",
     "package:ng-dialog": "npm run build:ng-dialog && cd ./dist/ng-dialog && npm pack",
+    "package:ng-input": "npm run build:ng-input && cd ./dist/ng-input && npm pack",
     "publish:ng-dialog": "cd ./dist/ng-dialog && npm publish --access=public",
+    "publish:ng-input": "cd ./dist/ng-input && npm publish --access=public",
     "start:ng-components-demo": "ng serve ng-components-demo -- --open",
     "test:ng-components-demo": "ng test ng-components-demo --browsers ChromeHeadless --watch false",
-    "test:ng-dialog": "ng test ng-dialog --browsers ChromeHeadless --watch false"
+    "test:ng-dialog": "ng test ng-dialog --browsers ChromeHeadless --watch false",
+    "test:ng-input": "ng test ng-dialog --browsers ChromeHeadless --watch false"
   },
   "dependencies": {
     "@angular/animations": "~14.2.0",
