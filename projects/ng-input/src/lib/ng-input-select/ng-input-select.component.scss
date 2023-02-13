@@ -1,0 +1,87 @@
+@import '../ng-input.mixin.scss';
+@import '../ng-input.placeholder.scss';
+@import '../ng-input.variable.scss';
+
+
+:host{
+  .input{
+    @include pos();
+    cursor: pointer;
+    &::after{
+      content: '';
+      @include pos(absolute, 2 * $ng-input-padding-y, 8px);
+      @include size(1rem);
+      display: inline-flex;
+      background-color: inherit;
+      border: {
+        right: 3px solid $ng-input-color-border-main;
+        top: 3px solid $ng-input-color-border-main;
+        top-right-radius: 3px;
+      };
+      transform: rotateZ(135deg) scale(1, 1) translate(0, 0);
+      pointer-events: none;
+    }
+    &.error{
+      &::after{
+        border-color: $ng-input-color-border-error;
+      }
+    }
+    &.focus{
+      cursor: text;
+      &::after{
+        border-color: $ng-input-color-border-main;
+        transform: rotateZ(135deg) scale(-1, -1) translate(-2px, 2px);
+      }
+      .input-list{
+        min-height: auto;
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: all;
+      }
+    }
+    &-list{
+      $transition-duration: .15s;
+      @include pos(absolute, $ng-input-height-input, 3px, unset, 3px);
+      min-height: 0;
+      background-color: rgba($ng-input-color-background-main, .8);
+      opacity: 0;
+      transform: scale(.975);
+      box-shadow: 0 2px 8px 1px $ng-input-color-shadow-main;
+      backdrop-filter: blur(3px);
+      transition:
+          opacity .15s cubic-bezier(0.215, 0.610, 0.355, 1),
+          transform .15s cubic-bezier(0.47, 0, 0.745, 0.715);
+      pointer-events: none;
+      z-index: 2;
+      &-item{
+        line-height: 2;
+        padding: 2px 3px 2px 8px;
+        border: {
+          bottom-left-radius: 5px;
+          bottom-right-radius: 5px;
+        };
+        cursor: pointer;
+        user-select: none;
+        &:hover{
+          // background-color: rgba(56, 129, 202, .8);
+          background-color: #3457dc;
+          color: white;
+        }
+        &__empty{
+          display: none;
+          opacity: 0.85;
+          font-size: 1.2rem;
+          text-align: center;
+          padding: 12px 1px;
+          cursor: default;
+          &:only-of-type{
+            @include flex-col();
+          }
+        }
+      }
+    }
+    &-errors{
+      cursor: initial;
+    }
+  }
+}

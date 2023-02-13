@@ -3,6 +3,7 @@
   "dest": "../../dist/ng-input",
   "assets": [".npmrc"],
   "lib": {
+    "styleIncludePaths": ["fonts.scss"],
     "entryFile": "src/public-api.ts"
   }
 }
