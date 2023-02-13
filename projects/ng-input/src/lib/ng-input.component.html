@@ -1,0 +1,131 @@
+
+<label *ngIf="hasLabel"
+  class="label"
+  [class.required]="required"
+  [for]="id"
+  [style.order]="1">{{ label }}</label>
+
+<div class="input"
+  [class.error]="error || hasError"
+  [class.focus]="isFocused$ | async"
+  [class.has-value]="hasValue"
+  [class.required]="required"
+  [style.order]="2">
+  <label *ngIf="!hasLabel"
+    class="input-placeholder"
+    [for]="id"
+    [style.order]="1">{{ placeholder }}</label>
+
+  <ng-container [ngSwitch]="type">
+    <ng-container *ngSwitchCase="'radio'">
+      <ng-container *ngTemplateOutlet="TraficInputRadio"></ng-container>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'select'">
+      <ng-container *ngTemplateOutlet="TraficInputSelect"></ng-container>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'textarea'">
+      <ng-container *ngTemplateOutlet="TraficInputTextarea"></ng-container>
+    </ng-container>
+
+    <ng-container *ngSwitchDefault>
+      <ng-container *ngTemplateOutlet="TraficInputStandard"></ng-container>
+    </ng-container>
+  </ng-container>
+
+  <div *ngIf="!!hint"
+    class="input-hint"
+    [style.order]="3">{{ hint }}</div>
+
+  <div *ngIf="hasError"
+    class="input-errors"
+    [style.order]="4">
+    <span *ngFor="let error of formControl | controlErrors"
+      class="error">{{ error }}</span>
+  </div>
+</div>
+
+<ng-template #TraficInputRadio>
+  <input tabindex="0"
+    [attr.role]="role"
+    [disabled]="disabled"
+    [id]="id"
+    [name]="name"
+    [readonly]="readonly"
+    [required]="required"
+    [style.order]="2"
+    [type]="type"
+    [value]="value"
+    (blur)="onBlurEventHandler($event)"
+    (change)="onChangeEventHandler($event)"
+    (focus)="onFocusEventHandler($event)" />
+</ng-template>
+
+<ng-template #TraficInputSelect>
+  <input tabindex="0"
+    type="text"
+    [attr.role]="role"
+    [autocomplete]="autocomplete"
+    [formControl]="formControl"
+    [id]="id"
+    [maxlength]="maxLength"
+    [name]="name"
+    [placeholder]="hasLabel ? placeholder : ''"
+    [readonly]="readonly"
+    [required]="required | coerciveBoolean"
+    [style.order]="2"
+    (blur)="onBlurEventHandler($event)"
+    (focus)="onFocusEventHandler($event)"
+    (keyup)="onKeyupEventHandler($event)" />
+
+  <div *ngIf="!readonly && !disabled"
+    class="input-list"
+    role="list"
+    tabindex="0"
+    [style.order]="2">
+    <div *ngFor="let option of options | arrayFilter:value"
+      class="input-list-item"
+      role="listitem"
+      [title]="option"
+      (click)="onChangeEventHandler(option)">{{ option }}</div>
+
+    <div class="input-list-item input-list-item__empty">Pas valeur(s)!</div>
+  </div>
+</ng-template>
+
+<ng-template #TraficInputTextarea>
+  <textarea tabindex="0"
+    [attr.role]="role"
+    [autocomplete]="autocomplete"
+    [formControl]="formControl"
+    [id]="id"
+    [maxlength]="maxLength"
+    [name]="name"
+    [placeholder]="hasLabel ? placeholder : ''"
+    [readonly]="readonly"
+    [required]="required | coerciveBoolean"
+    [style.order]="2"
+    (blur)="onBlurEventHandler($event)"
+    (focus)="onFocusEventHandler($event)"
+    (keyup)="onKeyupEventHandler($event)"></textarea>
+</ng-template>
+
+<ng-template #TraficInputStandard>
+  <input tabindex="0"
+    [attr.role]="role"
+    [autocomplete]="autocomplete"
+    [formControl]="formControl"
+    [id]="id"
+    [maxlength]="maxLength"
+    [name]="name"
+    [placeholder]="hasLabel ? placeholder : ''"
+    [readonly]="readonly"
+    [required]="required | coerciveBoolean"
+    [style.order]="2"
+    [type]="type"
+    (blur)="onBlurEventHandler($event)"
+    (focus)="onFocusEventHandler($event)"
+    (keyup)="onKeyupEventHandler($event)" />
+</ng-template>
+
