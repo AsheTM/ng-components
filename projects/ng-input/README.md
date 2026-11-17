@@ -1,24 +1,49 @@
-# NgInput
+# @ashetm/ng-input
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.0.
+Standalone Angular form inputs sharing one look: text, textarea, select, radio and date. Every input works as a form control with reactive and template-driven forms.
 
-## Code scaffolding
+*Requires Angular 14 or above (Angular 14 line).*
 
-Run `ng generate component component-name --project ng-input` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ng-input`.
-> Note: Don't forget to add `--project ng-input` or else it will be added to the default project in your `angular.json` file. 
+## Install
 
-## Build
+```bash
+npm install @ashetm/ng-input @ashetm/ng-utility @angular/cdk
+```
 
-Run `ng build ng-input` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Import
 
-## Publishing
+Every input is a standalone component; import the ones you need, or `NgInputModule` for all of them.
 
-After building your library with `ng build ng-input`, go to the dist folder `cd dist/ng-input` and run `npm publish`.
+```ts
+import { NgInputModule } from '@ashetm/ng-input';
 
-## Running unit tests
+@NgModule({
+  imports: [NgInputModule, ReactiveFormsModule]
+})
+export class AppModule { }
+```
 
-Run `ng test ng-input` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Inputs
 
-## Further help
+| Component | Selectors | Value type |
+| --- | --- | --- |
+| `NgInputText` | `ashetm-ng-input`, `ashetm-ng-input-text` | `string` |
+| `NgInputTextarea` | `ashetm-ng-input-textarea`, `ashetm-ng-input[type=textarea]`, `ashetm-ng-textarea` | `string` |
+| `NgInputSelect` | `ashetm-ng-input-select[options]`, `ashetm-ng-select[options]` | `string \| number` |
+| `NgInputRadio` | `ashetm-ng-input-radio[name]`, `ashetm-ng-input[name][type=radio]` | `boolean \| number \| string` |
+| `NgInputDate` | `ashetm-ng-input-date`, `ashetm-ng-input[type=date]` | `Date \| string` |
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Common inputs: `label`, `placeholder`, `hint`, `name`, `required`, `readonly`, `disabled`, `error`, `maxLength`, `block`, `value`.
+Common outputs: `blur`, `focus`, `keyup`.
+
+Validation errors of the bound form control are displayed once the control is touched.
+
+## Usage
+
+```html
+<form [formGroup]="formGroup">
+  <ashetm-ng-input-text formControlName="name" label="Name" required></ashetm-ng-input-text>
+  <ashetm-ng-input-select formControlName="country" label="Country" [options]="countries"></ashetm-ng-input-select>
+  <ashetm-ng-input-date formControlName="birthday" label="Birthday"></ashetm-ng-input-date>
+</form>
+```
