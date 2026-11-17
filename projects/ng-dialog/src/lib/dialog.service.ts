@@ -9,7 +9,6 @@ import {
   TemplateRef,
   Type
 } from '@angular/core';
-import { forkJoin } from 'rxjs';
 
 import { ADialogComponent } from './dialog.component';
 import { IDialogComponent } from './dialog.interface';
@@ -21,6 +20,8 @@ import { DialogFormComponent, DialogFormRef } from './dialog-form';
 
 @Injectable()
 export class DialogService {
+
+  private readonly _destroyedComponentRefs: WeakSet<ComponentRef<unknown>> = new WeakSet<ComponentRef<unknown>>();
 
   constructor(
     private readonly _componentFactoryResolver: ComponentFactoryResolver,
@@ -39,8 +40,7 @@ export class DialogService {
 
     this._initInputs(componentRef, { body, closeLabel, title });
     this._bindToDocument(componentRef);
-    sharedDialogAlertRef.onBeforeClose(() => false)
-      .subscribe({ complete: () => this._destroy(componentRef) });
+    sharedDialogAlertRef.afterClosed().subscribe(() => this._destroy(componentRef));
 
     return sharedDialogAlertRef;
   }
@@ -59,10 +59,7 @@ export class DialogService {
 
     this._initInputs(componentRef, { body, closeLabel, okLabel, title });
     this._bindToDocument(componentRef);
-    forkJoin([
-      sharedDialogConfirmRef.onBeforeClose(() => false),
-      sharedDialogConfirmRef.onBeforeDecision(() => false)
-    ]).subscribe({ complete: () => this._destroy(componentRef) });
+    sharedDialogConfirmRef.afterClosed().subscribe(() => this._destroy(componentRef));
 
     return sharedDialogConfirmRef;
   }
@@ -85,10 +82,7 @@ export class DialogService {
 
     this._initInputs(sharedDialogFormComponentRef, { closeLabel, okLabel, template, title });
     this._bindToDocument(sharedDialogFormComponentRef);
-    forkJoin([
-      sharedDialogFormRef.onBeforeClose(() => false),
-      sharedDialogFormRef.onBeforeData(() => false)
-    ]).subscribe({ complete: () => this._destroy(sharedDialogFormComponentRef) });
+    sharedDialogFormRef.afterClosed().subscribe(() => this._destroy(sharedDialogFormComponentRef));
 
     return sharedDialogFormRef;
   }
@@ -119,6 +113,11 @@ export class DialogService {
   private async _destroy<T extends ADialogComponent>(
     componentRef: ComponentRef<T>
   ): Promise<void> {
+    if(this._destroyedComponentRefs.has(componentRef)) {
+      return;
+    }
+
+    this._destroyedComponentRefs.add(componentRef);
     await this._animateClosingDialog(componentRef);
     this._removeFromDocument(componentRef);
     componentRef.destroy();
