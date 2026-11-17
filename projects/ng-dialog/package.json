@@ -32,8 +32,15 @@
     "ui"
   ],
   "private": false,
+  "license": "MIT",
+  "homepage": "https://github.com/AsheTM/ng-components/tree/main/projects/ng-dialog#readme",
+  "bugs": {
+    "url": "https://github.com/AsheTM/ng-components/issues"
+  },
   "repository": {
-    "url": "https://github.com/AsheTM/ng-components/tree/main/packages/ng-dialog"
+    "type": "git",
+    "url": "git+https://github.com/AsheTM/ng-components.git",
+    "directory": "projects/ng-dialog"
   },
   "peerDependencies": {
     "@angular/common": "^14.1.0",
