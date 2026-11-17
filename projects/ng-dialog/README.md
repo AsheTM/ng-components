@@ -44,6 +44,14 @@ export class AppModule { }
 
 ## Usage
 
+### Guards and events
+
+Each ``onBeforeX(fn)`` method registers a guard ``fn`` and returns an observable:
+
+- the action (close, decision or data) is performed only when **every** guard registered for it returns ``true``, otherwise the dialog stays opened
+- the observable emits the value of the action once, then completes
+- once the dialog is closed, every observable of its reference completes; the ones of the actions that were not performed complete without emitting (e.g. ``onBeforeDecision`` when the confirm dialog is closed with the Escape key)
+
 ### DialogAlert
 
 The serviec to use is ``DialogService#openDialogAlert``, it's definition is:
@@ -65,6 +73,8 @@ And it returns dialog reference ``DialogRef``, here is the exposed members:
 - ``type`` returns an ``EDialogType`` value with value of 'alert'
 - ``getInstanceId()`` returns a ``number`` of instance id
 - ``onBeforeClose(fn: () => boolean = () => true)`` returns ``Observable<void>`` and can pass a function handler to execute before closing, close the dialog alert if it returns true, else it stays opened
+- ``afterClosed()`` returns ``Observable<void>`` that emits once the dialog is closed, whatever the reason, then completes
+- ``closed`` returns ``true`` once the dialog is closed
 
 Example:
 
@@ -101,7 +111,9 @@ And it returns dialog reference ``DialogConfirmRef``, here is the exposed member
 - ``type`` returns an ``EDialogType`` value with value of 'confirm'
 - ``getInstanceId()`` returns a ``number`` of instance id
 - ``onBeforeClose(fn: () => boolean = () => true)`` returns ``Observable<void>`` and can pass a function handler to execute before closing, close the dialog if it returns true, else it stays opened
-- ``onBeforeDecision(fn: (decision: boolean) => boolean = (decision: boolean) => true)`` returns ``Observable<boolean>`` observable that returns the decision made by the user/client and can pass a function handler to execute before closing, close the dialog if it returns true etlse it stays opened
+- ``onBeforeDecision(fn: (decision: boolean) => boolean = (decision: boolean) => true)`` returns ``Observable<boolean>`` observable that returns the decision made by the user/client (``true`` for ok, ``false`` for close) and can pass a function handler to execute before closing, close the dialog if it returns true else it stays opened
+- ``afterClosed()`` returns ``Observable<void>`` that emits once the dialog is closed, whatever the reason, then completes
+- ``closed`` returns ``true`` once the dialog is closed
 
 Example:
 
@@ -138,7 +150,9 @@ And it returns dialog reference ``DialogFormRef<U>``, here is the exposed member
 - ``type`` returns an ``EDialogType`` value with value of 'alert'
 - ``getInstanceId()`` returns a ``number`` of instance id
 - ``onBeforeClose(fn: () => boolean = () => true)`` returns ``Observable<void>`` and can pass a function handler to execute before closing, close the dialog alert if it returns true, else it stays opened
-- ``onBeforeData(fn: (data: U) => boolean = (_: U) => true)`` returns ``Observable<U>`` observable that returns the data of the form written by the user/client and can pass a function handler to execute before closing, close the dialog if it returns true etlse it stays opened
+- ``onBeforeData(fn: (data: U) => boolean = (_: U) => true)`` returns ``Observable<U>`` observable that returns the data of the form written by the user/client and can pass a function handler to execute before closing, close the dialog if it returns true else it stays opened
+- ``afterClosed()`` returns ``Observable<void>`` that emits once the dialog is closed, whatever the reason, then completes
+- ``closed`` returns ``true`` once the dialog is closed
 
 It also needs to tag ``ng-template`` with the directive ``dialogFormBodyComponent``, that requires also to bind ``formGroup`` directive. And also take reference of that ``ng-template`` as ``DialogFormBodyComponent``.
 
