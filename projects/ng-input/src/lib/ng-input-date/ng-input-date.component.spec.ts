@@ -8,7 +8,7 @@ describe('NgInputDate', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NgInputDate ]
+      imports: [ NgInputDate ]
     })
     .compileComponents();
   });

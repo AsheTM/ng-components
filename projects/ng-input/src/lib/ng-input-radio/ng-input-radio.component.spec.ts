@@ -8,7 +8,7 @@ describe('NgInputRadio', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NgInputRadio ]
+      imports: [ NgInputRadio ]
     })
     .compileComponents();
   });

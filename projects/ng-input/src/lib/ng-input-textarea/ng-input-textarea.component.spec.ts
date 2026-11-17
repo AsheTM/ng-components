@@ -8,7 +8,7 @@ describe('InputTextarea', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NgInputTextarea ]
+      imports: [ NgInputTextarea ]
     })
     .compileComponents();
   });
