@@ -12,10 +12,16 @@ import {
 
 import { ADialogComponent } from './dialog.component';
 import { IDialogComponent } from './dialog.interface';
+import { TDialogAlertLabels, TDialogLabels } from './dialog.type';
 
 import { DialogAlertComponent, DialogAlertRef } from './dialog-alert';
 import { DialogConfirmComponent, DialogConfirmRef } from './dialog-confirm';
 import { DialogFormComponent, DialogFormRef } from './dialog-form';
+
+
+const DIALOG_ALERT_DEFAULT_LABELS:   Required<TDialogAlertLabels> = { closeLabel: 'Okey!' };
+const DIALOG_CONFIRM_DEFAULT_LABELS: Required<TDialogLabels>      = { closeLabel: 'Close', okLabel: 'Okey' };
+const DIALOG_FORM_DEFAULT_LABELS:    Required<TDialogLabels>      = { closeLabel: 'Cancel', okLabel: 'Submit' };
 
 
 @Injectable()
@@ -28,11 +34,8 @@ export class DialogService {
     private readonly _injector: Injector
   ) { }
 
-  openDialogAlert(title: string, body?: string, {
-    closeLabel
-  }: Record<'closeLabel', string> = {
-    closeLabel: 'Okey!'
-  }): DialogAlertRef {
+  openDialogAlert(title: string, body?: string, labels: TDialogAlertLabels = {}): DialogAlertRef {
+    const { closeLabel }: Required<TDialogAlertLabels> = { ...DIALOG_ALERT_DEFAULT_LABELS, ...labels };
     const componentRef: ComponentRef<DialogAlertComponent>
       = this._createComponentRef(DialogAlertComponent);
     const sharedDialogAlertRef: DialogAlertRef
@@ -45,13 +48,8 @@ export class DialogService {
     return sharedDialogAlertRef;
   }
 
-  openDialogConfirm(title: string, body?: string, {
-    closeLabel,
-    okLabel
-  }: Record<'closeLabel' | 'okLabel', string> = {
-    closeLabel: 'Close',
-    okLabel:    'Okey'
-  }): DialogConfirmRef {
+  openDialogConfirm(title: string, body?: string, labels: TDialogLabels = {}): DialogConfirmRef {
+    const { closeLabel, okLabel }: Required<TDialogLabels> = { ...DIALOG_CONFIRM_DEFAULT_LABELS, ...labels };
     const componentRef: ComponentRef<DialogConfirmComponent>
       = this._createComponentRef(DialogConfirmComponent);
     const sharedDialogConfirmRef: DialogConfirmRef
@@ -67,14 +65,9 @@ export class DialogService {
   openDialogForm<T extends TemplateRef<unknown>, U = any>(
     title: string,
     template: T,
-    {
-      closeLabel,
-      okLabel
-    }: Record<'closeLabel' | 'okLabel', string>  = {
-      closeLabel: 'Cancel',
-      okLabel:    'Submit'
-    }
+    labels: TDialogLabels = {}
   ): DialogFormRef<U> {
+    const { closeLabel, okLabel }: Required<TDialogLabels> = { ...DIALOG_FORM_DEFAULT_LABELS, ...labels };
     const sharedDialogFormComponentRef: ComponentRef<DialogFormComponent<U>>
       = this._createComponentRef(DialogFormComponent as any);
     const sharedDialogFormRef: DialogFormRef<U>

@@ -5,6 +5,7 @@ export * from './lib/dialog.component';
 export * from './lib/dialog.enum';
 export * from './lib/dialog.module';
 export * from './lib/dialog.service';
+export * from './lib/dialog.type';
 
 export * from './lib/dialog-alert';
 export * from './lib/dialog-confirm';
