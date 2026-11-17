@@ -1,6 +1,6 @@
 {
   "name": "@ashetm/ng-dialog",
-  "version": "1*.0.1",
+  "version": "14.1.0",
   "contributors": [
     {
       "email": "contact@ashetm.com",
@@ -36,10 +36,10 @@
     "url": "https://github.com/AsheTM/ng-components/tree/main/packages/ng-dialog"
   },
   "peerDependencies": {
-    "@angular/common": ">=1*",
-    "@angular/core": ">=1*",
-    "@angular/forms": ">=1*",
-    "rxjs": ">=6.5"
+    "@angular/common": "^14.1.0",
+    "@angular/core": "^14.1.0",
+    "@angular/forms": "^14.1.0",
+    "rxjs": ">=6.5.0 <8.0.0"
   },
   "dependencies": {
     "tslib": "^2.1.0"
