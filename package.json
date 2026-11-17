@@ -13,24 +13,32 @@
     "name": "DAWOUD Haitham",
     "url": "http://ashetm.com"
   },
+  "private": true,
+  "engines": {
+    "node": "^14.15.0 || ^16.10.0"
+  },
   "scripts": {
-    "build:ng-components-demo": "npm run lint:ng-components-demo & npm run test:ng-components-demo & ng build ng-components-demo",
-    "build:ng-dialog": "npm run lint:ng-dialog & npm run test:ng-dialog & ng build ng-dialog",
-    "build:ng-input": "npm run lint:ng-input & npm run test:ng-input & ng build ng-input",
-    "lint:ng-components-demo": "ng lint ng-components-demo --format stylish",
-    "lint:ng-components-demo:fix": "npm run lint:ng-components-demo -- --fix",
+    "build": "npm run build:ng-dialog && npm run build:ng-input && npm run build:ng-components-demo",
+    "build:ng-dialog": "ng build ng-dialog",
+    "build:ng-input": "ng build ng-input",
+    "build:ng-components-demo": "ng build ng-components-demo",
+    "lint": "ng lint",
     "lint:ng-dialog": "ng lint ng-dialog --format stylish",
     "lint:ng-dialog:fix": "npm run lint:ng-dialog -- --fix",
     "lint:ng-input": "ng lint ng-input --format stylish",
     "lint:ng-input:fix": "npm run lint:ng-input -- --fix",
-    "package:ng-dialog": "npm run build:ng-dialog && cd ./dist/ng-dialog && npm pack",
-    "package:ng-input": "npm run build:ng-input && cd ./dist/ng-input && npm pack",
+    "lint:ng-components-demo": "ng lint ng-components-demo --format stylish",
+    "lint:ng-components-demo:fix": "npm run lint:ng-components-demo -- --fix",
+    "package:ng-dialog": "npm run lint:ng-dialog && npm run test:ng-dialog && npm run build:ng-dialog && cd ./dist/ng-dialog && npm pack",
+    "package:ng-input": "npm run lint:ng-input && npm run test:ng-input && npm run build:ng-input && cd ./dist/ng-input && npm pack",
     "publish:ng-dialog": "cd ./dist/ng-dialog && npm publish --access=public",
     "publish:ng-input": "cd ./dist/ng-input && npm publish --access=public",
-    "start:ng-components-demo": "ng serve ng-components-demo -- --open",
-    "test:ng-components-demo": "ng test ng-components-demo --browsers ChromeHeadless --watch false",
-    "test:ng-dialog": "ng test ng-dialog --browsers ChromeHeadless --watch false",
-    "test:ng-input": "ng test ng-input --browsers ChromeHeadless --watch false"
+    "start:ng-components-demo": "npm run build:ng-dialog && npm run build:ng-input && ng serve ng-components-demo --open",
+    "test": "npm run test:ng-dialog && npm run test:ng-input",
+    "test:ng-dialog": "ng test ng-dialog --browsers ChromeHeadlessCI --watch false",
+    "test:ng-input": "ng test ng-input --browsers ChromeHeadlessCI --watch false",
+    "test:ng-components-demo": "ng test ng-components-demo --browsers ChromeHeadlessCI --watch false",
+    "verify": "npm run lint && npm run test && npm run build"
   },
   "dependencies": {
     "@angular/animations": "~14.2.0",
