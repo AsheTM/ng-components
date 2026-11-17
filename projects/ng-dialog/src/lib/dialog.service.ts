@@ -1,9 +1,10 @@
 import { DOCUMENT } from '@angular/common';
 import {
-  ComponentFactory,
-  ComponentFactoryResolver,
+  ApplicationRef,
   ComponentRef,
-  EmbeddedViewRef,
+  createComponent,
+  EnvironmentInjector,
+  Inject,
   Injectable,
   Injector,
   TemplateRef,
@@ -11,7 +12,7 @@ import {
 } from '@angular/core';
 
 import { ADialogComponent } from './dialog.component';
-import { IDialogComponent } from './dialog.interface';
+import { DialogRef } from './dialog-ref.class';
 import { TDialogAlertLabels, TDialogLabels } from './dialog.type';
 
 import { DialogAlertComponent, DialogAlertRef } from './dialog-alert';
@@ -27,39 +28,32 @@ const DIALOG_FORM_DEFAULT_LABELS:    Required<TDialogLabels>      = { closeLabel
 @Injectable()
 export class DialogService {
 
-  private readonly _destroyedComponentRefs: WeakSet<ComponentRef<unknown>> = new WeakSet<ComponentRef<unknown>>();
-
   constructor(
-    private readonly _componentFactoryResolver: ComponentFactoryResolver,
-    private readonly _injector: Injector
+    private readonly _applicationRef: ApplicationRef,
+    private readonly _environmentInjector: EnvironmentInjector,
+    private readonly _injector: Injector,
+    @Inject(DOCUMENT)
+      private readonly _document: Document
   ) { }
 
   openDialogAlert(title: string, body?: string, labels: TDialogAlertLabels = {}): DialogAlertRef {
     const { closeLabel }: Required<TDialogAlertLabels> = { ...DIALOG_ALERT_DEFAULT_LABELS, ...labels };
-    const componentRef: ComponentRef<DialogAlertComponent>
-      = this._createComponentRef(DialogAlertComponent);
-    const sharedDialogAlertRef: DialogAlertRef
-      = new DialogAlertRef(componentRef.instance);
 
-    this._initInputs(componentRef, { body, closeLabel, title });
-    this._bindToDocument(componentRef);
-    sharedDialogAlertRef.afterClosed().subscribe(() => this._destroy(componentRef));
-
-    return sharedDialogAlertRef;
+    return this._open(
+      DialogAlertComponent,
+      (component: DialogAlertComponent) => new DialogAlertRef(component),
+      { body, closeLabel, title }
+    );
   }
 
   openDialogConfirm(title: string, body?: string, labels: TDialogLabels = {}): DialogConfirmRef {
     const { closeLabel, okLabel }: Required<TDialogLabels> = { ...DIALOG_CONFIRM_DEFAULT_LABELS, ...labels };
-    const componentRef: ComponentRef<DialogConfirmComponent>
-      = this._createComponentRef(DialogConfirmComponent);
-    const sharedDialogConfirmRef: DialogConfirmRef
-      = new DialogConfirmRef(componentRef.instance);
 
-    this._initInputs(componentRef, { body, closeLabel, okLabel, title });
-    this._bindToDocument(componentRef);
-    sharedDialogConfirmRef.afterClosed().subscribe(() => this._destroy(componentRef));
-
-    return sharedDialogConfirmRef;
+    return this._open(
+      DialogConfirmComponent,
+      (component: DialogConfirmComponent) => new DialogConfirmRef(component),
+      { body, closeLabel, okLabel, title }
+    );
   }
 
   openDialogForm<T extends TemplateRef<unknown>, U = any>(
@@ -68,66 +62,39 @@ export class DialogService {
     labels: TDialogLabels = {}
   ): DialogFormRef<U> {
     const { closeLabel, okLabel }: Required<TDialogLabels> = { ...DIALOG_FORM_DEFAULT_LABELS, ...labels };
-    const sharedDialogFormComponentRef: ComponentRef<DialogFormComponent<U>>
-      = this._createComponentRef(DialogFormComponent as any);
-    const sharedDialogFormRef: DialogFormRef<U>
-      = new DialogFormRef<U>(sharedDialogFormComponentRef.instance);
 
-    this._initInputs(sharedDialogFormComponentRef, { closeLabel, okLabel, template, title });
-    this._bindToDocument(sharedDialogFormComponentRef);
-    sharedDialogFormRef.afterClosed().subscribe(() => this._destroy(sharedDialogFormComponentRef));
-
-    return sharedDialogFormRef;
+    return this._open<DialogFormComponent<U>, DialogFormRef<U>>(
+      DialogFormComponent as Type<DialogFormComponent<U>>,
+      (component: DialogFormComponent<U>) => new DialogFormRef<U>(component),
+      { closeLabel, okLabel, template, title }
+    );
   }
 
-  private _createComponentRef<T extends IDialogComponent>(
-    component: Type<T>
-  ): ComponentRef<T> {
-    const componentFactory: ComponentFactory<T>
-      = this._componentFactoryResolver.resolveComponentFactory<T>(component);
-
-    return componentFactory.create(this._injector);
-  }
-
-  private _initInputs<T extends IDialogComponent>(
-    componentRef: ComponentRef<T>,
-    inputs: Record<string, any>
-  ): void {
-    Object.keys(inputs).forEach((key: string) => (componentRef.instance as any)[key] = inputs[key]);
-    componentRef.changeDetectorRef.detectChanges();
-  }
-
-  private _bindToDocument<T extends IDialogComponent>(
-    componentRef: ComponentRef<T>
-  ): void {
-    document.body.appendChild((componentRef.hostView as EmbeddedViewRef<T>).rootNodes[0]);
-  }
-
-  private async _destroy<T extends ADialogComponent>(
-    componentRef: ComponentRef<T>
-  ): Promise<void> {
-    if(this._destroyedComponentRefs.has(componentRef)) {
-      return;
-    }
-
-    this._destroyedComponentRefs.add(componentRef);
-    await this._animateClosingDialog(componentRef);
-    this._removeFromDocument(componentRef);
-    componentRef.destroy();
-  }
-
-  private async _animateClosingDialog<T extends ADialogComponent>(
-    componentRef: ComponentRef<T>
-  ): Promise<void> {
-    await componentRef.instance.animateClosingDialog(() => {
-      componentRef.changeDetectorRef.detectChanges();
+  private _open<T extends ADialogComponent, R extends DialogRef>(
+    component: Type<T>,
+    createDialogRef: (component: T) => R,
+    inputs: Record<string, unknown>
+  ): R {
+    const componentRef: ComponentRef<T> = createComponent(component, {
+      environmentInjector:  this._environmentInjector,
+      elementInjector:      this._injector
     });
+    const dialogRef: R = createDialogRef(componentRef.instance);
+
+    Object.entries(inputs).forEach(([name, value]: [string, unknown]) => componentRef.setInput(name, value));
+    this._applicationRef.attachView(componentRef.hostView);
+    componentRef.changeDetectorRef.detectChanges();
+    this._document.body.appendChild(componentRef.location.nativeElement);
+    dialogRef.afterClosed().subscribe(() => this._destroy(componentRef));
+
+    return dialogRef;
   }
 
-  private _removeFromDocument<T extends IDialogComponent>(
-    componentRef: ComponentRef<T>
-  ): void {
-    document.body.removeChild((componentRef.hostView as EmbeddedViewRef<T>).rootNodes[0]);
+  private async _destroy<T extends ADialogComponent>(componentRef: ComponentRef<T>): Promise<void> {
+    await componentRef.instance.animateClosingDialog(() => componentRef.changeDetectorRef.detectChanges());
+
+    // Destroying the component detaches its view from the application and removes its host element.
+    componentRef.destroy();
   }
 
 }
