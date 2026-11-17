@@ -2,7 +2,7 @@
 
 This library provides a unique UI for 3 types of dialog: alert, confirm and form.
 
-*Only Angular 14 and above are available.*
+*Requires Angular 14.1 or above (Angular 14 line).*
 
 ## Install
 
