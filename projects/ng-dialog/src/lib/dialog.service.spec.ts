@@ -68,6 +68,24 @@ describe('DialogService', () => {
     expect(dialogs().length).toBe(1);
   }));
 
+  it('should close only the top-most dialog on Escape', fakeAsync(() => {
+    const escape = (): boolean => document.dispatchEvent(new KeyboardEvent('keyup', { key: 'Escape' }));
+
+    service.openDialogAlert('First');
+    service.openDialogAlert('Second');
+
+    escape();
+    flush();
+
+    expect(dialogs().length).toBe(1);
+    expect(dialogs()[0].textContent).toContain('First');
+
+    escape();
+    flush();
+
+    expect(dialogs().length).toBe(0);
+  }));
+
   it('should emit the confirm decision and remove the dialog', fakeAsync(() => {
     const ref: DialogConfirmRef = service.openDialogConfirm('Title', 'Body');
     const decisions: boolean[] = [];
