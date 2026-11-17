@@ -25,8 +25,6 @@ export class DialogFormComponent<U = unknown> extends ADialogComponent<DialogFor
 
   override template!: DialogFormBodyComponentDirective;
 
-  closeLabel!: string;
-  okLabel!: string;
 
   ngOnChanges({ template }: SimpleChanges): void {
     if(!!template?.currentValue && !(template.currentValue instanceof DialogFormBodyComponentDirective)) {

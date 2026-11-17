@@ -16,7 +16,6 @@ import {
 } from '@angular/core';
 
 import { DialogStack } from './dialog-stack.service';
-import { IDialogComponent } from './dialog.interface';
 
 
 const FOCUSABLE_SELECTOR: string = [
@@ -35,7 +34,7 @@ const FOCUSABLE_SELECTOR: string = [
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export abstract class ADialogComponent<T extends TemplateRef<unknown> = TemplateRef<any>>
-  implements AfterViewInit, IDialogComponent, OnDestroy, OnInit {
+  implements AfterViewInit, OnDestroy, OnInit {
 
   private static _idCount = 0;
 
@@ -46,8 +45,8 @@ export abstract class ADialogComponent<T extends TemplateRef<unknown> = Template
   @Input() body?: string;
   @Input() template?: T;
 
-  @Input() abstract closeLabel?: string;
-  @Input() abstract okLabel?: string;
+  @Input() closeLabel?: string;
+  @Input() okLabel?: string;
 
   @Output() close: EventEmitter<void> = new EventEmitter<void>();
 

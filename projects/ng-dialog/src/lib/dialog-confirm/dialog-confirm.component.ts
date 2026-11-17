@@ -20,9 +20,6 @@ export class DialogConfirmComponent extends ADialogComponent {
 
   readonly type: 'confirm' = 'confirm';
 
-  closeLabel!: string;
-  okLabel!: string;
-
   override onCloseClickEventHandler(): void {
     this.decision.emit(false);
   }
