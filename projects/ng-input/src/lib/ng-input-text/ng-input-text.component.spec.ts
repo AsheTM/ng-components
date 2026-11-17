@@ -8,7 +8,7 @@ describe('NgInputText', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NgInputText ]
+      imports: [ NgInputText ]
     })
     .compileComponents();
   });

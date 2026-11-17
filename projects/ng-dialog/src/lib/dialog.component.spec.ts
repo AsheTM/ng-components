@@ -43,13 +43,16 @@ describe('ADialogComponent', () => {
     expect(component.type).toEqual(type);
   });
 
-  it('should close event handler work', () => {
-    expect(component.close).toBeDefined();
-    expect(component.onCloseClickEventHandler).toBeDefined();
-    component.close.subscribe(() => {
-      expect(component.close.emit).toHaveBeenCalledTimes(1);
-    });
+  it('should emit close once on close click', () => {
+    const closeSpy: jasmine.Spy = jasmine.createSpy('close');
 
+    component.close.subscribe(closeSpy);
     component.onCloseClickEventHandler();
+
+    expect(closeSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should throw on ok click when not implemented', () => {
+    expect(() => component.onOkClickEventHandler()).toThrowError(/not implemented/);
   });
 });

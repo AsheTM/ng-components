@@ -8,7 +8,7 @@ describe('NgInputSelect', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NgInputSelect ]
+      imports: [ NgInputSelect ]
     })
     .compileComponents();
   });
