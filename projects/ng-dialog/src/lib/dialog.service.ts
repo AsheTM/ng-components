@@ -20,8 +20,8 @@ import { DialogConfirmComponent, DialogConfirmRef } from './dialog-confirm';
 import { DialogFormComponent, DialogFormRef } from './dialog-form';
 
 
-const DIALOG_ALERT_DEFAULT_LABELS:   Required<TDialogAlertLabels> = { closeLabel: 'Okey!' };
-const DIALOG_CONFIRM_DEFAULT_LABELS: Required<TDialogLabels>      = { closeLabel: 'Close', okLabel: 'Okey' };
+const DIALOG_ALERT_DEFAULT_LABELS:   Required<TDialogAlertLabels> = { closeLabel: 'OK' };
+const DIALOG_CONFIRM_DEFAULT_LABELS: Required<TDialogLabels>      = { closeLabel: 'Close', okLabel: 'OK' };
 const DIALOG_FORM_DEFAULT_LABELS:    Required<TDialogLabels>      = { closeLabel: 'Cancel', okLabel: 'Submit' };
 
 
