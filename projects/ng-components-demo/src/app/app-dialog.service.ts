@@ -20,7 +20,7 @@ export class AppDialogService {
     ).onBeforeClose(() => {
       console.log('Alert dialog before closing!');
 
-      return false;
+      return true;
     }).subscribe({
       complete: () => {
         console.log('Alert dialog closed successfully!');
