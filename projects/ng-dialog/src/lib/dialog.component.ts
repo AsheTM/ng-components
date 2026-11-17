@@ -4,11 +4,15 @@ import {
   EventEmitter,
   HostBinding,
   HostListener,
+  inject,
   Input,
+  OnDestroy,
+  OnInit,
   Output,
   TemplateRef
 } from '@angular/core';
 
+import { DialogStack } from './dialog-stack.service';
 import { IDialogComponent } from './dialog.interface';
 
 
@@ -18,7 +22,7 @@ import { IDialogComponent } from './dialog.interface';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export abstract class ADialogComponent<T extends TemplateRef<unknown> = TemplateRef<any>>
-  implements IDialogComponent {
+  implements IDialogComponent, OnDestroy, OnInit {
 
   @HostBinding('class.close') protected classClose = false;
 
@@ -34,12 +38,25 @@ export abstract class ADialogComponent<T extends TemplateRef<unknown> = Template
 
   abstract readonly type: 'alert' | 'confirm' | 'form' | 'notification';
 
+  private readonly _dialogStack: DialogStack = inject(DialogStack);
+
+  ngOnInit(): void {
+    this._dialogStack.push(this);
+  }
+
+  ngOnDestroy(): void {
+    this._dialogStack.remove(this);
+  }
+
   @HostListener('document:keyup.escape')
   onEscapeKeyUpEventListener(): void {
-    this.close.emit();
+    if(this._dialogStack.isTopMost(this)) {
+      this.close.emit();
+    }
   }
 
   animateClosingDialog(beforeAnimating?: () => void): Promise<void> {
+    this._dialogStack.remove(this);
     this.classClose = true;
     beforeAnimating?.();
 
