@@ -82,9 +82,10 @@ export class DialogService {
     const dialogRef: R = createDialogRef(componentRef.instance);
 
     Object.entries(inputs).forEach(([name, value]: [string, unknown]) => componentRef.setInput(name, value));
+    // Appended before the first change detection, so that the dialog can take the focus once rendered.
+    this._document.body.appendChild(componentRef.location.nativeElement);
     this._applicationRef.attachView(componentRef.hostView);
     componentRef.changeDetectorRef.detectChanges();
-    this._document.body.appendChild(componentRef.location.nativeElement);
     dialogRef.afterClosed().subscribe(() => this._destroy(componentRef));
 
     return dialogRef;
