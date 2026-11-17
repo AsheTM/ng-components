@@ -26,7 +26,23 @@ describe('DialogConfirmComponent', () => {
   it('should create confirm type', () => {
     expect(component.decision).toBeDefined();
     expect(component.type).toEqual('confirm');
+  });
 
-    expect(component.onOkClickEventHandler()).not.toThrow();
+  it('should emit a positive decision on ok click', () => {
+    const decisions: boolean[] = [];
+
+    component.decision.subscribe((decision: boolean) => decisions.push(decision));
+
+    expect(() => component.onOkClickEventHandler()).not.toThrow();
+    expect(decisions).toEqual([true]);
+  });
+
+  it('should emit a negative decision on close click', () => {
+    const decisions: boolean[] = [];
+
+    component.decision.subscribe((decision: boolean) => decisions.push(decision));
+    component.onCloseClickEventHandler();
+
+    expect(decisions).toEqual([false]);
   });
 });
