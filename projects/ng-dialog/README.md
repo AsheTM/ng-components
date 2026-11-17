@@ -60,13 +60,13 @@ The serviec to use is ``DialogService#openDialogAlert``, it's definition is:
 openDialogAlert(
   title: string, 
   body?: string, 
-  { closeLabel }?: Record<'closeLabel', string>
+  labels?: TDialogAlertLabels
 ): DialogRef;
 ```
 
 - 1st argument *title*, is the title of dialog (REQUIRED)
 - 2nd argument *body*, is the body of dialog (OPTIONAL) (DEFAULT - '')
-- 3rd argument *buttons*, is an object with closeLabel key to override the label of close button (OPTIONAL) (DEFAULT - closeLabel = 'Okey!)
+- 3rd argument *buttons*, is an object with an optional closeLabel key to override the label of close button (OPTIONAL) (DEFAULT - closeLabel = 'Okey!)
 
 And it returns dialog reference ``DialogRef``, here is the exposed members:
 
@@ -98,13 +98,13 @@ The serviec to use is ``DialogService#openDialogConfirm``, it's definition is:
 openDialogConfirm(
   title: string, 
   body?: string, 
-  { closeLabel, okLabel }?: Record<'closeLabel' | 'okLabel', string>
+  labels?: TDialogLabels
 ): DialogConfirmRef;
 ```
 
 - 1st argument *title*, is the title of dialog (REQUIRED)
 - 2nd argument *body*, is the body of dialog (OPTIONAL) (DEFAULT - '')
-- 3rd argument *buttons*, is an object with closeLabel and okLabel keys to override the label of close button and okLabel (OPTIONAL) (DEFAULT - closeLabel = 'Close, okLabel = 'Okey')
+- 3rd argument *buttons*, is an object with optional closeLabel and okLabel keys to override the label of close and ok buttons, each omitted label keeps its default (OPTIONAL) (DEFAULT - closeLabel = 'Close, okLabel = 'Okey')
 
 And it returns dialog reference ``DialogConfirmRef``, here is the exposed members:
 
@@ -137,13 +137,13 @@ The service to use is ``DialogService#openDialogForm``, it's definition is:
 openDialogForm<T extends TemplateRef<unknown>, U = any>(
   title: string, 
   template: T, 
-  { closeLabel, okLabel }?: Record<'closeLabel' | 'okLabel', string>
+  labels?: TDialogLabels
 ): DialogFormRef<U>;
 ```
 
 - 1st argument *title*, is the title of dialog (REQUIRED)
 - 2nd argument *template*, is the body template of dialog (REQUIRED)
-- 3rd argument *buttons*, is an object with closeLabel and okLabel keys to override the label of close button and okLabel (OPTIONAL) (DEFAULT - closeLabel = 'Cancel, okLabel = 'Submit')
+- 3rd argument *buttons*, is an object with optional closeLabel and okLabel keys to override the label of close and ok buttons, each omitted label keeps its default (OPTIONAL) (DEFAULT - closeLabel = 'Cancel, okLabel = 'Submit')
 
 And it returns dialog reference ``DialogFormRef<U>``, here is the exposed members:
 

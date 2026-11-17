@@ -86,6 +86,15 @@ describe('DialogService', () => {
     expect(dialogs().length).toBe(0);
   }));
 
+  it('should keep the default label of every button that is not overridden', () => {
+    service.openDialogConfirm('Title', 'Body', { closeLabel: 'No' });
+
+    const dialog: HTMLElement = dialogs()[0];
+
+    expect(dialog.querySelector('button.secondary')?.textContent).toBe('No');
+    expect(dialog.querySelector('button.primary')?.textContent).toBe('Okey');
+  });
+
   it('should emit the confirm decision and remove the dialog', fakeAsync(() => {
     const ref: DialogConfirmRef = service.openDialogConfirm('Title', 'Body');
     const decisions: boolean[] = [];
