@@ -29,7 +29,7 @@ export class DialogFormComponent<U = unknown> extends ADialogComponent<DialogFor
   okLabel!: string;
 
   ngOnChanges({ template }: SimpleChanges): void {
-    if(!!template && !(template instanceof DialogFormBodyComponentDirective)) {
+    if(!!template?.currentValue && !(template.currentValue instanceof DialogFormBodyComponentDirective)) {
       throw new Error('\'template\' input provided value is not instance of DialogFormBodyComponentDirective');
     }
   }
