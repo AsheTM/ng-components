@@ -18,9 +18,6 @@ export class DialogAlertComponent extends ADialogComponent<never> {
 
   override readonly template:  never | undefined;
 
-  readonly okLabel:   undefined;
   readonly type:      'alert'           = 'alert';
-
-  closeLabel!: string;
 
 }

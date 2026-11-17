@@ -3,8 +3,7 @@ import { Inject, ModuleWithProviders, NgModule } from '@angular/core';
 import { DialogRootModule } from './dialog-root.module';
 import { EDialogInstance } from './dialog.enum';
 import { DialogService } from './dialog.service';
-import { DIALOG_TOKEN_COLOR, DIALOG_TOKEN_INSTANCE } from './dialog.token';
-import { TDialogRootConfiguration } from './dialog.type';
+import { DIALOG_TOKEN_INSTANCE } from './dialog.token';
 
 
 @NgModule({
@@ -24,25 +23,13 @@ export class DialogModule {
     }
   }
 
-  static forRoot(/*{
-    color
-  }: TDialogRootConfiguration = {
-    color: {
-      background: { },
-      text: { }
-    }
-  }*/): ModuleWithProviders<DialogRootModule> {
+  static forRoot(): ModuleWithProviders<DialogRootModule> {
     return {
       ngModule:   DialogRootModule,
       providers:  [
         {
           provide:  DIALOG_TOKEN_INSTANCE,
           useValue: EDialogInstance.FOR_ROOT
-        // }, {
-        //   provide: DIALOG_TOKEN_COLOR,
-        //   useValue: {
-        //     ...color
-        //   }
         },
 
         DialogService
