@@ -1,8 +1,9 @@
-import { DialogRef } from "../dialog-ref.class";
+import { DialogRef } from '../dialog-ref.class';
+import { EDialogType } from '../dialog.enum';
 
 
 export class DialogAlertRef extends DialogRef {
 
-  protected override _maxEvent = 1;
+  override readonly type: EDialogType.ALERT = EDialogType.ALERT;
 
 }
