@@ -42,6 +42,13 @@ import { DialogModule } from '@ashetm/ng-dialog';
 export class AppModule { }
 ```
 
+## Accessibility
+
+- alert and confirm dialogs use ``role="alertdialog"``, form dialogs use ``role="dialog"``, all with ``aria-modal="true"``
+- the dialog is labelled by its title and described by its body
+- the focus moves to the first focusable element when the dialog opens, stays trapped inside it while it is opened, and goes back to the previously focused element once it is closed
+- the Escape key requests to close the top-most dialog only
+
 ## Usage
 
 ### Guards and events
