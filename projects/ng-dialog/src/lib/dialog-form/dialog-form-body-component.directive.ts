@@ -4,6 +4,7 @@ import { FormGroup, FormGroupDirective } from '@angular/forms';
 
 @Directive({
   exportAs: 'DialogFormBodyComponent',
+  // eslint-disable-next-line @angular-eslint/directive-selector -- public API selector, renaming it is a breaking change
   selector: 'ng-template[dialogFormBodyComponent][formGroup]'
 })
 export class DialogFormBodyComponentDirective<T = any, U = any> extends TemplateRef<T> {

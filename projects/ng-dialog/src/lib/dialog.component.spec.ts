@@ -13,7 +13,7 @@ describe('ADialogComponent', () => {
   let fixture: ComponentFixture<ADialogComponent>;
 
   @Component({
-    selector: 'test-dialog-selector',
+    selector: 'ashetm-test-dialog',
     template: ''
   })
   class DialogComponent extends ADialogComponent {
