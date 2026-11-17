@@ -20,6 +20,7 @@ import { ANgInputFormControl } from './ng-input-form-control.class';
 
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector -- placeholder of an abstract base component, never rendered
   selector:         '// PLACEHOLDER',
   template:         '<!-- NgInputComponent PLACEHOLDER -->',
   changeDetection:  ChangeDetectionStrategy.OnPush
@@ -47,10 +48,13 @@ export abstract class NgInputComponent<T extends string | number | boolean | Dat
     this.writeValue(val);
   }
 
+  // eslint-disable-next-line @angular-eslint/no-output-native -- public API output, renaming it is a breaking change
   @Output() protected readonly blur:    EventEmitter<FocusEvent>
     = new EventEmitter<FocusEvent>();
+  // eslint-disable-next-line @angular-eslint/no-output-native -- public API output, renaming it is a breaking change
   @Output() protected readonly focus:   EventEmitter<FocusEvent>
     = new EventEmitter<FocusEvent>();
+  // eslint-disable-next-line @angular-eslint/no-output-native -- public API output, renaming it is a breaking change
   @Output() protected readonly keyup:   EventEmitter<KeyboardEvent>
     = new EventEmitter<KeyboardEvent>();
 

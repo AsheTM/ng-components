@@ -29,6 +29,7 @@ const FOCUSABLE_SELECTOR: string = [
 
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector -- placeholder of an abstract base component, never rendered
   selector: '<!-- DO NOT INSTANCIATE -->',
   template: `<!-- PLACEHOLDER -->`,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -48,6 +49,7 @@ export abstract class ADialogComponent<T extends TemplateRef<unknown> = Template
   @Input() closeLabel?: string;
   @Input() okLabel?: string;
 
+  // eslint-disable-next-line @angular-eslint/no-output-native -- public API output, renaming it is a breaking change
   @Output() close: EventEmitter<void> = new EventEmitter<void>();
 
   abstract readonly type: 'alert' | 'confirm' | 'form' | 'notification';

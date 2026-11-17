@@ -34,6 +34,15 @@
             "tsConfig": "projects/ng-dialog/tsconfig.spec.json",
             "karmaConfig": "projects/ng-dialog/karma.conf.js"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ng-dialog/**/*.ts",
+              "projects/ng-dialog/**/*.html"
+            ]
+          }
         }
       }
     },
@@ -46,7 +55,7 @@
       },
       "root": "projects/ng-components-demo",
       "sourceRoot": "projects/ng-components-demo/src",
-      "prefix": "app",
+      "prefix": "ashetm",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -137,6 +146,15 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ng-components-demo/**/*.ts",
+              "projects/ng-components-demo/**/*.html"
+            ]
+          }
         }
       }
     },
@@ -167,6 +185,15 @@
             "main": "projects/ng-input/src/test.ts",
             "tsConfig": "projects/ng-input/tsconfig.spec.json",
             "karmaConfig": "projects/ng-input/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ng-input/**/*.ts",
+              "projects/ng-input/**/*.html"
+            ]
           }
         }
       }
