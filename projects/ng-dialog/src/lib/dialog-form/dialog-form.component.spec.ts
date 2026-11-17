@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, SimpleChange, TemplateRef, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
@@ -63,5 +63,23 @@ describe('DialogFormComponent', () => {
 
     expect(() => component.onOkClickEventHandler()).not.toThrow();
     expect(data).toEqual([{ name: 'Sample name' }]);
+  });
+
+  it('should accept a DialogFormBodyComponentDirective bound as template', () => {
+    expect(() => component.ngOnChanges({
+      template: new SimpleChange(undefined, host.template, true)
+    })).not.toThrow();
+  });
+
+  it('should reject a template that is not a DialogFormBodyComponentDirective', () => {
+    expect(() => component.ngOnChanges({
+      template: new SimpleChange(undefined, {} as TemplateRef<unknown>, true)
+    })).toThrowError(/DialogFormBodyComponentDirective/);
+  });
+
+  it('should ignore an unset template', () => {
+    expect(() => component.ngOnChanges({
+      template: new SimpleChange(host.template, undefined, false)
+    })).not.toThrow();
   });
 });
