@@ -1,3 +1,17 @@
+# 2.1.0
+
+- [x] Release `@ashetm/ng-dialog` 14.1.0 (bug fixes, accessibility) and 14.1.1 (package metadata)
+- [x] Release `@ashetm/ng-input` 14.0.0
+- [x] Repair the unit test suites and run them headless
+- [x] Make npm scripts fail fast, add aggregated `build`, `lint`, `test` and `verify` scripts
+- [x] Make the root package private and pin the Node.js version
+- [x] Remove legacy dev dependencies (tslint, codelyzer, protractor, …)
+- [x] Set up ESLint with angular-eslint
+- [x] Add the MIT license and fix package metadata
+- [x] Add GitHub Actions continuous integration
+- [x] Rewrite README, CONTRIBUTING and CHANGELOG
+- [x] Remove the Nx leftover component of the demo
+
 # 2.0.0
 
 - [x] Switch from an Nx mono repository to an Angular workspace (`projects/`)

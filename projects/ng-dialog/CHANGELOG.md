@@ -1,3 +1,8 @@
+# 14.1.1
+
+- [x] Ship the MIT license with the package
+- [x] Add `license`, `homepage` and `bugs`, and fix the `repository` metadata
+
 # 14.1.0
 
 - [x] Fix `getInstanceId` always returning `0`, each dialog reference now has its own id
