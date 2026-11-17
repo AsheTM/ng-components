@@ -7,7 +7,7 @@ import { EDialogType } from './dialog.enum';
 
 export abstract class DialogRef {
 
-  protected static instance = 0;
+  private static _instanceCount = 0;
 
   readonly type: EDialogType = EDialogType.DEFAULT;
 
@@ -17,12 +17,12 @@ export abstract class DialogRef {
 
   private _eventCount = 0;
 
-  constructor(private readonly _aDialogComponent: ADialogComponent) {
-    DialogRef.instance = DialogRef.instance++;
-  }
+  private readonly _instanceId: number = ++DialogRef._instanceCount;
+
+  constructor(private readonly _aDialogComponent: ADialogComponent) { }
 
   getInstanceId(): number {
-    return DialogRef.instance;
+    return this._instanceId;
   }
 
   onBeforeClose(fn: () => boolean = () => true): Observable<void> {
