@@ -1,10 +1,17 @@
 
-<div class="dialog">
+<div class="dialog"
+  tabindex="-1"
+  aria-modal="true"
+  [attr.role]="role"
+  [attr.aria-labelledby]="title ? dialogId + '-title' : null"
+  [attr.aria-describedby]="body ? dialogId + '-body' : null">
   <div *ngIf="title"
-    class="dialog-header">{{ title }}</div>
+    class="dialog-header"
+    [id]="dialogId + '-title'">{{ title }}</div>
 
   <div *ngIf="body || template"
     class="dialog-body"
+    [id]="dialogId + '-body'"
     [ngSwitch]="type">
     <ng-template *ngIf="template"
       [ngSwitchCase]="'form'"
@@ -18,22 +25,19 @@
     <ng-container [ngSwitch]="type">
       <ng-template [ngSwitchCase]="'confirm'">
         <button class="primary"
-          role="button"
-          tabindex="0"
+          type="button"
           (click)="onOkClickEventHandler()">{{ okLabel }}</button>
       </ng-template>
 
       <ng-template [ngSwitchCase]="'form'">
         <button class="primary"
-          role="button"
-          tabindex="0"
+          type="button"
           (click)="onOkClickEventHandler()">{{ okLabel }}</button>
       </ng-template>
     </ng-container>
 
     <button class="secondary"
-      role="button"
-      tabindex="0"
+      type="button"
       (click)="onCloseClickEventHandler()">{{ closeLabel }}</button>
   </div>
 </div>
