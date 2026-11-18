@@ -34,6 +34,7 @@ import { NgInputComponent } from '../ng-input.component';
   ],
   standalone:       true
 })
+// eslint-disable-next-line @angular-eslint/component-class-suffix -- public API class name, renaming it is a breaking change
 export class NgInputText extends NgInputComponent<string>
   implements OnChanges, OnDestroy, OnInit {
 
