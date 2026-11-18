@@ -1,0 +1,102 @@
+@import './ng-input.mixin.scss';
+@import './ng-input.placeholder.scss';
+@import './ng-input.variable.scss';
+
+
+:host {
+  // min-width: 120px;
+  // min-height: 56px;
+  display: inline-flex;
+  flex-direction: column;
+  margin: 8px;
+  &.block{
+    @include size(calc(100% - 16px), auto);
+    max-width: initial;
+  }
+  &:not(.block){
+    max-width: 180px;
+  }
+  label.label{
+    all: unset;
+    font-family: Lato;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    padding: 5px 8px 5px 1px;
+    user-select: none;
+    &.required::after{
+      content: '*';
+    }
+  }
+  .input{
+    $this: &;
+    @include pos();
+    @include flex-col;
+    width: auto;
+    min-width: inherit;
+    font-family: Lato;
+    color: $ng-input-color-text-main;
+    &.error{
+      input{
+        border-color: $ng-input-color-border-error;
+        &::placeholder{
+          color: $ng-input-color-text-error;
+        }
+      }
+      .input-errors{
+        @include flex-col;
+        color: $ng-input-color-text-error;
+      }
+    }
+    &.focus .input-errors{
+      // color: inherit;
+    }
+    &.focus,
+    &.has-value{
+      .input-placeholder{
+        @include pos(absolute, -10px, unset, unset, 5px);
+        background-color: $ng-input-color-background-primary;
+        font-size: .8rem;
+      }
+    }
+    &.required .input-placeholder::after{
+      content: '*';
+    }
+    input{
+      @extend %input;
+    }
+    &-errors{
+      // display: none;
+      margin: 3px 5px;
+      span.error{
+        line-height: 1.4;
+      }
+    }
+    &-hint{
+      @include flex-row;
+      align-items: center;
+      justify-content: flex-end;
+      font-size: 1rem;
+      padding: 5px 8px;
+    }
+    &-placeholder{
+      $transition-duration: 150ms;
+      $transition-timing-function: linear;
+      all: unset;
+      @include pos(absolute, 4px, unset, unset, 8px);
+      background-color: transparent;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: capitalize;
+      padding: 5px 8px 0 5px;
+      transition:
+          background-color $transition-duration $transition-timing-function,
+          font-size $transition-duration $transition-timing-function,
+          left $transition-duration $transition-timing-function,
+          top $transition-duration $transition-timing-function;
+      user-select: none;
+    }
+  }
+}

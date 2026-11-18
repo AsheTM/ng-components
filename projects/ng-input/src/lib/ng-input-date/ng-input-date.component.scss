@@ -1,0 +1,14 @@
+@import '../ng-input.mixin.scss';
+@import '../ng-input.placeholder.scss';
+@import '../ng-input.variable.scss';
+
+
+:host{
+  .input{
+    input{
+      &::-webkit-calendar-picker-indicator{
+        margin: 0;
+      }
+    }
+  }
+}

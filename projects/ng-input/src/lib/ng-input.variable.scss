@@ -1,0 +1,31 @@
+
+$ng-input-height-input: 34px;
+$ng-input-padding-y: 5px;
+
+
+
+
+$ng-input-color-background-main: #fafafa;
+$ng-input-color-background-primary: #fefeff;
+$ng-input-color-background-secondary: #ffcc00;
+$ng-input-color-background-disabled: #0001;
+$ng-input-color-background-error: #f02323;
+
+$ng-input-color-border-main: #0002;
+$ng-input-color-border-primary: #0011;
+$ng-input-color-border-secondary: #000d;
+$ng-input-color-border-highlight: $ng-input-color-background-secondary;
+$ng-input-color-border-focus: #3457dc;
+$ng-input-color-border-error: $ng-input-color-background-error;
+
+$ng-input-color-shadow-main: $ng-input-color-background-disabled;
+$ng-input-color-shadow-primary: #0005;
+$ng-input-color-shadow-secondary: $ng-input-color-border-highlight;
+$ng-input-color-shadow-disabled: rgba($ng-input-color-border-focus, .2);
+
+$ng-input-color-text-main: #333c;
+$ng-input-color-text-primary: #65676a;
+$ng-input-color-text-secondary: #000;
+$ng-input-color-text-highlight: $ng-input-color-shadow-secondary;
+$ng-input-color-text-disabled: $ng-input-color-shadow-primary;
+$ng-input-color-text-error: $ng-input-color-border-error;

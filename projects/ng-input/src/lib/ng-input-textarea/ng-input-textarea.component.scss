@@ -1,0 +1,15 @@
+@import '../ng-input.mixin.scss';
+@import '../ng-input.placeholder.scss';
+@import '../ng-input.variable.scss';
+
+
+:host{
+  .input{
+    textarea{
+      @extend %input;
+      height: 120px;
+      min-height: 80px;
+      resize: vertical;
+    }
+  }
+}

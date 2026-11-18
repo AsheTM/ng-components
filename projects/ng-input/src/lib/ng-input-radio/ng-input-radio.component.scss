@@ -1,0 +1,70 @@
+@import '../ng-input.mixin.scss';
+@import '../ng-input.placeholder.scss';
+@import '../ng-input.variable.scss';
+
+
+:host{
+  .input{
+    flex-direction: row-reverse !important;
+    &-label{
+      display: none;
+    }
+    &-placeholder{
+      text-transform: capitalize !important;
+    }
+    &.focus .input-placeholder,
+    &-placeholder{
+      @include pos(relative !important, 1px !important, 0 !important, 0 !important, 0 !important);
+      padding: 0 !important;
+      font-size: 1rem !important;
+    }
+    input[type=radio]{
+      @extend %input;
+      @include size(calc($ng-input-height-input / 2) !important);
+      min-width: calc($ng-input-height-input / 2) !important;
+      max-width: calc($ng-input-height-input / 2);
+      color: $ng-input-color-text-highlight !important;
+      padding: 0 !important;
+      margin-right: 5px !important;
+      border-radius: 100% !important;
+      transform: scale(.5);
+      transition:
+          transform .25s linear,
+          box-shadow .25s linear,
+          border-color .15s linear !important;
+      appearance: none !important;
+      box-sizing: content-box !important;
+      &::before{
+        content: '';
+        @include size(inherit);
+        min-width: inherit;
+        max-width: inherit;
+        background-color: currentColor;
+        border-radius: 100%;
+        transform: scale(0);
+      }
+      &:checked{
+        &::before{
+          transform: scale(0.7) translate(.5px, .5px);
+        }
+      }
+      &:disabled{
+        pointer-events: none;
+        &::before{
+          background-color: $ng-input-color-text-primary !important;
+        }
+      }
+      &:focus:focus{
+        border-color: $ng-input-color-border-main !important;
+        box-shadow: 0 0 3px 0px currentColor !important;
+      }
+      &:read-only{
+        border-width: 1px !important;
+      }
+    }
+    &-errors,
+    &-hint{
+      display: none !important;
+    }
+  }
+}
