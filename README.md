@@ -26,6 +26,16 @@ npm run verify                      # lint, test and build, as the CI does
 
 Each project also has its own scripts, e.g. `npm run test:ng-dialog`, `npm run build:ng-input`, `npm run package:ng-dialog`.
 
+## Publishing
+
+```bash
+npm run package:ng-dialog                       # lint, test, build, then pack to dist/ashetm-ng-dialog-<version>.tgz
+npm run publish:ng-dialog -- --dry-run          # check the published files first
+npm run publish:ng-dialog -- --tag ng14         # publish dist/ng-dialog
+```
+
+Extra arguments are passed to `npm publish`. Without `--tag`, the version becomes `latest`: use a dist-tag (e.g. `ng14`) when publishing a maintenance line older than the current `latest`.
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
